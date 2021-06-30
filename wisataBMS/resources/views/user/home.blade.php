@@ -113,10 +113,21 @@
                                     <li><a href="#">Transportasi</a></li>
 								</ul>
 							</li>
-							<li class=""><a href="#">Berita</a></li>
+                            <li class=""><a href="#">Berita</a></li>
                             <li>
-								<a class="btn btn-primary " href="/login">Login</a>
-								
+								<a href="#" class="fh5co-sub-ddown"><img src="images/user.png" width="25" height="25" alt="user">       {{ $user->name }}</a>
+								<ul class="fh5co-sub-menu">
+									<li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                        </form>
+                                    </li>
+								</ul>
 							</li>
 						</ul>
 					</nav>

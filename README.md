@@ -1,11 +1,10 @@
 ## Instalasi
 
-Setelah melakukan clone repo ini, lakukan instalasi paket dengan composer:
-
+Setelah melakukan clone repo ini, buat database kosong dengan nama: 
 ```bash
-composer install
+wisataBMS
 ```
-Selanjutnya, buat database kosong dengan nama 'wisataBMS'. Lalu konfigurasi file .env dan lakukan migrate serta seeding:
+Lalu konfigurasi file .env dan lakukan migrate serta seeding:
 ```bash
 php artisan migrate
 php artisan db:seed

@@ -1,10 +1,12 @@
-1. create db : wisataBMS
-2. lakukan command berikut didalam terminal/cmd 
-	
-	php artisan migrate 
+## Instalasi
 
-3. and this too
+Setelah melakukan clone repo ini, lakukan instalasi paket dengan composer:
 
-	php artisan db:seed
-
-4. enjoyyy thx.... ^_^
+```bash
+composer install
+```
+Selanjutnya, buat database kosong dengan nama 'wisataBMS'. Lalu konfigurasi file .env dan lakukan migrate serta seeding:
+```bash
+php artisan migrate
+php artisan db:seed
+```

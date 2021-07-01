@@ -9,3 +9,4 @@ Lalu konfigurasi file .env dan lakukan migrate serta seeding:
 php artisan migrate
 php artisan db:seed
 ```
+enjoy thx...

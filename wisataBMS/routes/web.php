@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WisataController;
+
+Route::resource('wisatas', WisataController::class);
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,5 +29,5 @@ Route::middleware(['auth'])->group(function () {
         Auth::logout();
         redirect('/');
     });
- 
+    
 });

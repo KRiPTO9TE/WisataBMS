@@ -7,26 +7,11 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Beranda | Klinthung Banyumas</title>
+	<title>Admin Page | Klinthung Banyumas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FREEHTML5.CO" />
+	<meta name="author" content="" />
 
-  <!-- 
-	//////////////////////////////////////////////////////
-
-	FREE HTML5 TEMPLATE 
-	DESIGNED & DEVELOPED by FREEHTML5.CO
-		
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
-
-	//////////////////////////////////////////////////////
-	 -->
-
+  
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
@@ -105,19 +90,55 @@
 			</div>
 		</header>
 
-	
+		<div id="fh5co-tours" class="fh5co-section-gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+						<h3>Admin Page</h3>
+						<p>Untuk menambah wisata, Kuliner dan Fasilitas klik opsi dibawah ini. masih belum familiar dengan fiturnya? baca panduanya <a href="uas.pdf">disini</a> </p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+						<div href="#"><img src="images/place-w.jpg" alt="cafe" class="img-responsive">
+							<div class="desc">
+								<span></span>
+								<h3>Wisata</h3>
+								<span>Tambah daftar wisata disini</span>
+								<a class="btn btn-primary btn-outline" href="/wisatas">Tambah<i class="icon-arrow-right22"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+						<div href="#"><img src="images/place-k.jpg" alt="restoran" class="img-responsive">
+							<div class="desc">
+								<span></span>
+								<h3>Kuliner</h3>
+								<span>Tambah daftar kuliner disini</span>
+								<a class="btn btn-primary btn-outline" href="#">Tambah<i class="icon-arrow-right22"></i></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+						<div href="#"><img src="images/place-f.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
+							<div class="desc">
+								<span></span>
+								<h3>Fasilitas</h3>
+								<span>Tambah daftar Fasilitas disini</span>
+								<a class="btn btn-primary btn-outline" href="#">Tambah<i class="icon-arrow-right22"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		
 		<footer>
 			<div id="footer">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center">
-							<p class="fh5co-social-icons">
-								<a href="#"><i class="icon-twitter2"></i></a>
-								<a href="#"><i class="icon-facebook2"></i></a>
-								<a href="https://www.instagram.com/pemkab_banyumas/"><i class="icon-instagram"></i></a>
-								<a href="#"><i class="icon-youtube"></i></a>
-							</p>
+							
 							<p>Copyright ©2021 All rights reserved | Dinkominfo Kabupaten Banyumas</p>
 						</div>
 					</div>

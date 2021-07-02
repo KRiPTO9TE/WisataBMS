@@ -9,7 +9,7 @@ namespace App\Http\Controllers;
 use App\Models\Wisata;
 
 use Illuminate\Http\Request;
-
+use Auth;
   
 
 class WisataController extends Controller

@@ -22,7 +22,7 @@ class AdminMiddleware
             silahkan modifikasi pada bagian ini
             apa yang dilakukan jika rolenya tidak sesuai
             */
-            return redirect()->to('logout');
+            return redirect()->to('user');
         }
         return $next($request);
     }

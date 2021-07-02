@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WisataController;
 
-Route::resource('wisatas', WisataController::class);
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,6 +19,7 @@ Route::middleware(['auth'])->group(function () {
  
     Route::middleware(['admin'])->group(function () {
         Route::get('admin', [AdminController::class, 'index']);
+        Route::resource('wisatas', WisataController::class);
     });
  
     Route::middleware(['user'])->group(function () {
@@ -27,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
  
     Route::get('/logout', function() {
         Auth::logout();
-        redirect('/');
+        redirect('/login');
     });
     
 });

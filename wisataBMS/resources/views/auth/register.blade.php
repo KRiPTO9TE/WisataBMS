@@ -6,7 +6,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Masuk | Klinthung Banyumas</title>
+	<title>registrasi | Klinthung Banyumas</title>
 	
 
 	<meta property="og:title" content=""/>

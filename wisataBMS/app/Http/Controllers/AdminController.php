@@ -11,5 +11,6 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         return view('admin.home', compact('user'));
+        
     }
 }

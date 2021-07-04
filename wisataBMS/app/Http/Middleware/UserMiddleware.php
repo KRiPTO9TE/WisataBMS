@@ -18,10 +18,7 @@ class UserMiddleware
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->role != "user"){
-            /* 
-            silahkan modifikasi pada bagian ini
-            yang dilakukan jika rolenya tidak sesuai
-            */
+        
             return redirect()->to('logout');
         }
         return $next($request);

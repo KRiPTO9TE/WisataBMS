@@ -10,6 +10,12 @@ use App\Http\Controllers\WisataController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('wisata', function () {
+
+    $wisata = DB::table('wisatas')->get();
+
+    return view('wisata', ['wisata' => $wisata]);
+});
 
 Auth::routes();
 

@@ -3,6 +3,7 @@
      
 
 @section('content')
+<div class = "container">
 
     <div class="row">
 
@@ -101,7 +102,7 @@
 
                     <strong>Category:</strong>
 
-                    <input type="text" name="category" value="{{ $wisata->name }}" class="form-control" placeholder="Category">
+                    <input type="text" name="category" value="{{ $wisata->category }}" class="form-control" placeholder="Category">
 
                 </div>
 
@@ -112,7 +113,7 @@
 
                     <strong>Maps:</strong>
 
-                    <input type="text" name="maps" value="{{ $wisata->name }}" class="form-control" placeholder="Maps">
+                    <input type="text" name="maps" value="{{ $wisata->maps }}" class="form-control" placeholder="Maps">
 
                 </div>
 
@@ -130,5 +131,6 @@
      
 
     </form>
-
+    </div>
+    <br><br><br>
 @endsection

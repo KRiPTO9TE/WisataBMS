@@ -1,129 +1,130 @@
 @extends('wisatas.layout')
 
-  
+   
 
 @section('content')
 
-<div class="row">
 
-    <div class="col-lg-12 margin-tb">
+<div class="container">
 
-        <div class="pull-left">
 
-            <h2>Add New Wisata</h2>
+        <div class="row">
 
-        </div>
+<div class="col-lg-12 margin-tb">
 
-        <div class="pull-right">
+    <div class="pull-left">
 
-            <a class="btn btn-primary" href="{{ route('wisatas.index') }}"> Back</a>
+        <h2>Add New Wisata</h2>
 
-        </div>
+    </div>
+
+    <div class="pull-right">
+
+        <a class="btn btn-primary" href="{{ route('wisatas.index') }}"> Back</a>
 
     </div>
 
 </div>
 
-     
+</div>
+
+ 
 
 @if ($errors->any())
 
-    <div class="alert alert-danger">
+<div class="alert alert-danger">
 
-        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
 
-        <ul>
+    <ul>
 
-            @foreach ($errors->all() as $error)
+        @foreach ($errors->all() as $error)
 
-                <li>{{ $error }}</li>
+            <li>{{ $error }}</li>
 
-            @endforeach
+        @endforeach
 
-        </ul>
+    </ul>
 
-    </div>
+</div>
 
 @endif
 
-     
+ 
 
 <form action="{{ route('wisatas.store') }}" method="POST" enctype="multipart/form-data">
 
-    @csrf
+@csrf
 
-    
 
-     <div class="row">
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
+ <div class="row">
 
-            <div class="form-group">
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
-                <strong>Name:</strong>
+        <div class="form-group">
 
-                <input type="text" name="name" class="form-control" placeholder="Name">
+            <strong>Name:</strong>
 
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Detail:</strong>
-
-                <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
-
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Image:</strong>
-
-                <input type="file" name="image" class="form-control" placeholder="image">
-
-            </div>
-
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Category:</strong>
-
-                <input type="text" name="category" class="form-control" placeholder="Category">
-
-            </div>
-
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-
-            <div class="form-group">
-
-                <strong>Maps:</strong>
-
-                <input type="text" name="maps" class="form-control" placeholder="Maps">
-
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-
-                <button type="submit" class="btn btn-primary">Submit</button>
+            <input type="text" name="name" class="form-control" placeholder="Name">
 
         </div>
 
     </div>
 
-     
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
-</form>
+        <div class="form-group">
 
+            <strong>Detail:</strong>
+
+            <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
+
+        </div>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+        <div class="form-group">
+
+            <strong>Image:</strong>
+
+            <input type="file" name="image" class="form-control" placeholder="image">
+
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+        <div class="form-group">
+
+            <strong>Category:</strong>
+
+            <input type="text" name="category" class="form-control" placeholder="Category">
+
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+        <div class="form-group">
+
+            <strong>Maps:</strong>
+
+            <input type="text" name="maps" class="form-control" placeholder="Maps">
+
+        </div>
+
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+    </div>
+
+</div>
+
+</div>
 @endsection

@@ -69,9 +69,9 @@
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="#">Home</a></li>
 							<li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Objek Wisata</a>
+								<a href="/wisata" class="fh5co-sub-ddown">Objek Wisata</a>
 								<ul class="fh5co-sub-menu">
-                                    <li><a href="#">Semua Wisata</a></li>
+                                    <li><a href="/wisata">Semua Wisata</a></li>
                                     <li><a href="#">Hiburan</a></li>
 									<li><a href="#">Wisata Keluarga</a></li>
 									<li><a href="#">Wisata Taman</a></li>

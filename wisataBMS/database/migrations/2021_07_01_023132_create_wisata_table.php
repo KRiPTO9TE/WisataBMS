@@ -35,7 +35,7 @@ class CreateWisataTable extends Migration
             $table->text('detail');
             $table->string('image');
             $table->string('category');
-            $table->string('maps');
+            $table->string('maps, 1999');
             $table->timestamps();
 
         });

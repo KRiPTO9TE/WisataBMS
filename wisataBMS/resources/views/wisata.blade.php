@@ -7,11 +7,11 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Admin Page | Klinthung Banyumas</title>
+	<title>Beranda | Klinthung Banyumas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="" />
 
-  
+ 
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
@@ -67,25 +67,41 @@
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li class="active"><a href="#">Home</a></li>
-							<li class=""><a href="/wisatas">Wisata</a></li>
-                            <li class=""><a href="/kuliners">Kuliner</a></li>
-                            <li class=""><a href="/fasilitass">Fasilitas</a></li>
-							
-                            <li>
-								<a href="#" class="fh5co-sub-ddown"><img src="images/user.png" width="25" height="25" alt="user">       {{ $user->name }}</a>
+							<li ><a href="#">Home</a></li>
+							<li class="active">
+								<a href="vacation.html" class="fh5co-sub-ddown">Objek Wisata</a>
 								<ul class="fh5co-sub-menu">
-									<li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                        </form>
-                                    </li>
+                                    <li><a href="#">Semua Wisata</a></li>
+                                    <li><a href="#">Hiburan</a></li>
+									<li><a href="#">Wisata Keluarga</a></li>
+									<li><a href="#">Wisata Taman</a></li>
 								</ul>
+							</li>
+                            <li>
+								<a href="vacation.html" class="fh5co-sub-ddown">Kuliner</a>
+								<ul class="fh5co-sub-menu">
+									<li><a href="#">Semua Kuliner</a></li>
+									<li><a href="#">Cafe</a></li>
+									<li><a href="#">Kuliner Modern</a></li>
+									<li><a href="#">Kuliner Tradisional</a></li>
+								</ul>
+							</li>
+                            <li>
+								<a href="vacation.html" class="fh5co-sub-ddown">Fasilitas</a>
+								<ul class="fh5co-sub-menu">
+									<li><a href="#">Semua Fasilitas</a></li>
+									<li><a href="#">ATM & Bank</a></li>
+                                    <li><a href="#">Pusat Pendidikan</a></li>
+                                    <li><a href="#">Penginapan</a></li>
+                                    <li><a href="#">Rumah Sakit & Klinik</a></li>
+                                    <li><a href="#">SPBU</a></li>
+                                    <li><a href="#">Transportasi</a></li>
+								</ul>
+							</li>
+							<li class=""><a href="#">Berita</a></li>
+                            <li>
+								<a class="btn btn-primary " href="/login">Login</a>
+								
 							</li>
 						</ul>
 					</nav>
@@ -93,55 +109,54 @@
 			</div>
 		</header>
 
-		<div id="fh5co-tours" class="fh5co-section-gray">
+		<!-- end:header-top -->
+        <div id="fh5co-blog-section" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Admin Page</h3>
-						<p>Untuk menambah wisata, Kuliner dan Fasilitas klik opsi dibawah ini. masih belum familiar dengan fiturnya? baca panduanya <a href="uas.pdf">disini</a> </p>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-w.jpg" alt="cafe" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Wisata</h3>
-								<span>Tambah daftar wisata disini</span>
-								<a class="btn btn-primary btn-outline" href="/wisatas">Tambah<i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-k.jpg" alt="restoran" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Kuliner</h3>
-								<span>Tambah daftar kuliner disini</span>
-								<a class="btn btn-primary btn-outline" href="#">Tambah<i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-f.jpg" alt="Free HTML5 Website Template by FreeHTML5.co" class="img-responsive">
-							<div class="desc">
-								<span></span>
-								<h3>Fasilitas</h3>
-								<span>Tambah daftar Fasilitas disini</span>
-								<a class="btn btn-primary btn-outline" href="#">Tambah<i class="icon-arrow-right22"></i></a>
-							</div>
-						</div>
+						<h3>Wisata</h3>
+						<p>Daftar kumpulan wisata di Kabupaten Banyumas dari hiburan sampai wisata keluarga yang siap untuk menemani liburanmu!</p>
 					</div>
 				</div>
 			</div>
+            
+			<div class="container">
+            <div class="row row-bottom-padded-md">
+            
+            
+                @foreach($wisata as $key => $data)
+                
+					<div class="col-lg-4 col-md-4 col-sm-6">
+						<div class="fh5co-blog animate-box">
+							<a href="#"><img class="img-responsive" src="image/{{$data->image}}" alt=""></a>
+							<div class="blog-text">
+								<div class="prod-title">
+									<h3><a href="#">{{$data->name}}</a></h3>
+									<span class="posted_by">{{$data->category}}</span>
+									<p><a href="#">Learn More...</a></p>
+								</div>
+							</div> 
+						</div>
+					</div>
+				@endforeach
+                
+                
+					<div class="clearfix visible-md-block"></div>
+				</div>
+
+			</div>
 		</div>
-		
 		<footer>
 			<div id="footer">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center">
-							
+							<p class="fh5co-social-icons">
+								<a href="#"><i class="icon-twitter2"></i></a>
+								<a href="#"><i class="icon-facebook2"></i></a>
+								<a href="https://www.instagram.com/pemkab_banyumas/"><i class="icon-instagram"></i></a>
+								<a href="#"><i class="icon-youtube"></i></a>
+							</p>
 							<p>Copyright ©2021 All rights reserved | Dinkominfo Kabupaten Banyumas</p>
 						</div>
 					</div>
@@ -158,8 +173,7 @@
 	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
-
-
+    
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>

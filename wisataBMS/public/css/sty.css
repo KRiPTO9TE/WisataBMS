@@ -23,13 +23,7 @@ body {
 body.fh5co-offcanvas {
   overflow: hidden;
 }
-table{
-  table-layout: fixed;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-}
-#more {display: none;}
+
 a {
   color: #F78536;
   -webkit-transition: 0.5s, ease;

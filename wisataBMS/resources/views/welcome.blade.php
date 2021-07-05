@@ -63,7 +63,7 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><img src="images/logo.png" width="35" height="35" alt="logo"> KLINTHUNG</a></h1>
+					<h1 id="fh5co-logo"><a href="/"><img src="images/logo.png" width="35" height="35" alt="logo"> KLINTHUNG</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
@@ -78,7 +78,7 @@
 								</ul>
 							</li>
                             <li>
-								<a href="vacation.html" class="fh5co-sub-ddown">Kuliner</a>
+								<a href="/kuliner" class="fh5co-sub-ddown">Kuliner</a>
 								<ul class="fh5co-sub-menu">
 									<li><a href="#">Semua Kuliner</a></li>
 									<li><a href="#">Cafe</a></li>
@@ -171,7 +171,7 @@
 						</div>
 					</div>
 					<div class="col-md-12 text-center animate-box">
-						<p><a class="btn btn-primary btn-outline btn-lg" href="#">Lihat semua kuliner<i class="icon-arrow-right22"></i></a></p>
+						<p><a class="btn btn-primary btn-outline btn-lg" href="/kuliner">Lihat semua kuliner<i class="icon-arrow-right22"></i></a></p>
 					</div>
 				</div>
 			</div>
@@ -225,7 +225,7 @@
 								<div class="title-bg">
 									<div class="case-studies-summary">
 										<h2>Rekomendasi Tempat Wisata</h2>
-										<span><a href="#">Lihat semua tempat wisata</a></span>
+										<span><a href="/wisata">Lihat semua tempat wisata</a></span>
 									</div>
 								</div>
 							</li>
@@ -361,7 +361,11 @@
 							</div>
 						</div>
 					</div>
+					
 				</div>
+				<div class="col-md-12 text-center animate-box">
+						<p><a class="btn btn-primary btn-outline btn-lg" href="/fasil">Lihat semua fasilitas<i class="icon-arrow-right22"></i></a></p>
+					</div>
 			</div>
 		</div>
 			

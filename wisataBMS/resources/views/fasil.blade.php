@@ -7,7 +7,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Wisata | Klinthung Banyumas</title>
+	<title>Fasilitas | Klinthung Banyumas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="" />
 
@@ -68,7 +68,7 @@
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li ><a href="/">Home</a></li>
-							<li class="active">
+							<li >
 								<a href="/wisata" class="fh5co-sub-ddown">Objek Wisata</a>
 								<ul class="fh5co-sub-menu">
                                     <li><a href="/wisata">Semua Wisata</a></li>
@@ -77,7 +77,7 @@
 									<li><a href="#">Wisata Taman</a></li>
 								</ul>
 							</li>
-                            <li>
+                            <li >
 								<a href="/kuliner" class="fh5co-sub-ddown">Kuliner</a>
 								<ul class="fh5co-sub-menu">
 									<li><a href="/kuliner">Semua Kuliner</a></li>
@@ -86,10 +86,10 @@
 									<li><a href="#">Kuliner Tradisional</a></li>
 								</ul>
 							</li>
-                            <li>
-								<a href="/fasil" class="fh5co-sub-ddown">Fasilitas</a>
+                            <li class="active">
+								<a href="#" class="fh5co-sub-ddown">Fasilitas</a>
 								<ul class="fh5co-sub-menu">
-									<li><a href="/fasil">Semua Fasilitas</a></li>
+									<li><a href="#">Semua Fasilitas</a></li>
 									<li><a href="#">ATM & Bank</a></li>
                                     <li><a href="#">Pusat Pendidikan</a></li>
                                     <li><a href="#">Penginapan</a></li>
@@ -114,8 +114,8 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
-						<h3>Wisata</h3>
-						<p>Daftar kumpulan wisata di Kabupaten Banyumas dari hiburan sampai wisata keluarga yang siap untuk menemani liburanmu!</p>
+						<h3>Fasilitas</h3>
+						<p>Daftar Fasilitas di Kabupaten Banyumas yang siap untuk menemani liburanmu menjadi aman, nyaman dan tenang</p>
 					</div>
 				</div>
 			</div>
@@ -124,7 +124,7 @@
             <div class="row row-bottom-padded-md">
             
             
-                @foreach($wisata as $key => $data)
+                @foreach($fasil as $key => $data)
                 
 					<div class="col-lg-4 col-md-4 col-sm-6">
 						<div class="fh5co-blog animate-box">

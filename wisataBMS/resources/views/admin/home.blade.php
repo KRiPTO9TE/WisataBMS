@@ -63,14 +63,14 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="index.html"><img src="images/logo.png" width="35" height="35" alt="logo"> KLINTHUNG</a></h1>
+					<h1 id="fh5co-logo"><a href="/admin"><img src="images/logo.png" width="35" height="35" alt="logo"> KLINTHUNG</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class="active"><a href="#">Home</a></li>
 							<li class=""><a href="/wisatas">Wisata</a></li>
                             <li class=""><a href="/kuliners">Kuliner</a></li>
-                            <li class=""><a href="/fasilitass">Fasilitas</a></li>
+                            <li class=""><a href="/fasils">Fasilitas</a></li>
 							
                             <li>
 								<a href="#" class="fh5co-sub-ddown"><img src="images/user.png" width="25" height="25" alt="user">       {{ $user->name }}</a>
@@ -107,18 +107,18 @@
 							<div class="desc">
 								<span></span>
 								<h3>Wisata</h3>
-								<span>Tambah daftar wisata disini</span>
-								<a class="btn btn-primary btn-outline" href="/wisatas">Tambah<i class="icon-arrow-right22"></i></a>
+								<span>Kelola daftar wisata disini</span>
+								<a class="btn btn-primary btn-outline" href="/wisatas">Kelola<i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
-						<div href="#"><img src="images/place-k.jpg" alt="restoran" class="img-responsive">
+						<div href=""><img src="images/place-k.jpg" alt="restoran" class="img-responsive">
 							<div class="desc">
 								<span></span>
 								<h3>Kuliner</h3>
-								<span>Tambah daftar kuliner disini</span>
-								<a class="btn btn-primary btn-outline" href="#">Tambah<i class="icon-arrow-right22"></i></a>
+								<span>Kelola daftar kuliner disini</span>
+								<a class="btn btn-primary btn-outline" href="/kuliners">Kelola<i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>
@@ -127,8 +127,8 @@
 							<div class="desc">
 								<span></span>
 								<h3>Fasilitas</h3>
-								<span>Tambah daftar Fasilitas disini</span>
-								<a class="btn btn-primary btn-outline" href="#">Tambah<i class="icon-arrow-right22"></i></a>
+								<span>Kelola daftar Fasilitas disini</span>
+								<a class="btn btn-primary btn-outline" href="/fasils">Kelola<i class="icon-arrow-right22"></i></a>
 							</div>
 						</div>
 					</div>

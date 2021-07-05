@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -63,14 +62,14 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="/admin"><img src="{{ asset('images/logo.png') }}" width="35" height="35" alt="logo"> KLINTHUNG</a></h1>
+					<h1 id="fh5co-logo"><a href="#"><img src="{{ asset('images/logo.png') }}" width="35" height="35" alt="logo"> KLINTHUNG</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class=""><a href="/admin">Home</a></li>
-							<li class="active"><a href="/wisatas">Wisata</a></li>
+							<li class=""><a href="/wisatas">Wisata</a></li>
                             <li class=""><a href="/kuliners">Kuliner</a></li>
-                            <li class=""><a href="/fasils">Fasilitas</a></li>
+                            <li class="active"><a href="/fasils">Fasilitas</a></li>
                             <li>
 								<a href="#" class="fh5co-sub-ddown"><img src="{{ asset('images/user.png') }}" width="25" height="25" alt="user">{{ auth()->user()->name }}</a>
 								<ul class="fh5co-sub-menu">
@@ -90,129 +89,51 @@
 					</nav>
 				</div>
 			</div>
-		</header><br><br>
-
-  
-
-        <div class="container">
-
-<div class="row">
-
-    <div class="col-lg-12 margin-tb">
-
-        <div class="pull-left">
-
-            <h2>Daftar Wisata</h2>
-
-        </div>
-
-        <div class="pull-right">
-
-            <a class="btn btn-success" href="{{ route('wisatas.create') }}"> Tambah Wisata</a>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-@if ($message = Session::get('success'))
-
-    <div class="alert alert-success">
-
-        <p>{{ $message }}</p>
-
-    </div>
-
-@endif
-
- 
-
-<table class="table table-bordered">
-
-    <tr>
-
-        <th>No</th>
-
-        <th>Image</th>
-
-        <th>Name</th>
-
-        <th>Details</th>
-
-        <th width="280px">Action</th>
-
-    </tr>
-
-    @foreach ($wisatas as $wisata)
-
-    <tr>
-
-        <td>{{ ++$i }}</td>
-
-        <td><img src="/image/{{ $wisata->image }}" width="100px"></td>
-
-        <td>{{ $wisata->name }}</td>
-		<td><a class="btn btn-info" href="{{ route('wisatas.show',$wisata->id) }}">Lihat detail</a> </td>
-			
-        <td>
-		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Hapus</button>
-		<a class="btn btn-primary" href="{{ route('wisatas.edit',$wisata->id) }}">Edit</a>
-
-
-		<!-- Modal -->
-		<div id="myModal" class="modal fade" role="dialog">
-  			<div class="modal-dialog">
-
-    			<!-- Modal content-->
-    			<div class="modal-content">
-      				<div class="modal-header">
-        				<button type="button" class="close" data-dismiss="modal">&times;</button>
-        				<h4 class="modal-title">Hapus</h4>
-      				</div>
-      			<div class="modal-body">
-        			<p>Anda yakin untuk menghapus?</p>
-      			</div>
-      			<div class="modal-footer">
-        			
-					<form action="{{ route('wisatas.destroy',$wisata->id) }}" method="POST">
-                		
-		                @csrf
-        		        @method('DELETE')
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		                <button type="submit" class="btn btn-danger">Delete</button>
-				    </form>
-      			</div>
-    		</div>
-
-  			</div>
+		</header>
+        <div id="fh5co-tours" class="fh5co-section-gray">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+						<h3>Fasilitas {{ $fasil->category }}</h3>
+						<p>Pilihan fasilitas di Kabupaten Banyumas yang siap untuk memabantu liburanmu di Banyumas dengan aman, tenang dan nyaman.</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 animate-box">
+						<h2 class="heading-title">{{ $fasil->name }}</h2>
+					</div>
+					<div class="col-md-6 animate-box">
+						<p>{{ $fasil->detail }}</p>
+						
+					</div>
+					<div class="col-md-6 animate-box">
+						<img class="img-responsive" src="/image/{{ $fasil->image }}" alt="travel"><br><br>
+					</div>
+                    <div class="col-md-12 animate-box">
+                        <iframe class="centermap" src="{{ $fasil->maps }}" width="1140" height="450" style="border:0;" allowfullscreen="0" loading="lazy"></iframe>
+					</div>
+				</div>
+			</div>
 		</div>
 
-            
 
-        </td>
-
-    </tr>
-	
-
-    @endforeach
-
-</table>
-</div>
-
-
-{!! $wisatas->links() !!}
-
-
-
-    
-
-
-
-   
-	
+        <footer>
+			<div id="footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3 text-center">
+							<p class="fh5co-social-icons">
+								<a href="#"><i class="icon-twitter2"></i></a>
+								<a href="#"><i class="icon-facebook2"></i></a>
+								<a href="https://www.instagram.com/pemkab_banyumas/"><i class="icon-instagram"></i></a>
+								<a href="#"><i class="icon-youtube"></i></a>
+							</p>
+							<p>Copyright ©2021 All rights reserved | Dinkominfo Kabupaten Banyumas</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 
 	</div>
 	<!-- END fh5co-page -->
@@ -221,7 +142,6 @@
 	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
-	
 
 
 	<script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -252,7 +172,4 @@
 
 	</body>
 </html>
-
-
-        
 

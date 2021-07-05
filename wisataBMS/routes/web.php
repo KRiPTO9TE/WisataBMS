@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WisataController;
+use App\Http\Controllers\KulinerController;
+use App\Http\Controllers\FasilController;
+
+  
+
 
 
 
@@ -16,6 +21,19 @@ Route::get('wisata', function () {
 
     return view('wisata', ['wisata' => $wisata]);
 });
+Route::get('kuliner', function () {
+
+    $kuliner = DB::table('kuliners')->get();
+
+    return view('kuliner', ['kuliner' => $kuliner]);
+});
+Route::get('fasil', function () {
+
+    $fasil = DB::table('fasils')->get();
+
+    return view('fasil', ['fasil' => $fasil]);
+});
+
 
 Auth::routes();
 
@@ -26,6 +44,9 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['admin'])->group(function () {
         Route::get('admin', [AdminController::class, 'index']);
         Route::resource('wisatas', WisataController::class);
+        Route::resource('kuliners', KulinerController::class);
+        Route::resource('fasils', FasilController::class);
+        
     });
  
     Route::middleware(['user'])->group(function () {

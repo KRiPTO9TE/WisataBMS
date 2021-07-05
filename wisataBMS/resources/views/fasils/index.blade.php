@@ -68,9 +68,9 @@
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 							<li class=""><a href="/admin">Home</a></li>
-							<li class="active"><a href="/wisatas">Wisata</a></li>
+							<li class=""><a href="/wisatas">Wisata</a></li>
                             <li class=""><a href="/kuliners">Kuliner</a></li>
-                            <li class=""><a href="/fasils">Fasilitas</a></li>
+                            <li class="active"><a href="/fasils">Fasilitas</a></li>
                             <li>
 								<a href="#" class="fh5co-sub-ddown"><img src="{{ asset('images/user.png') }}" width="25" height="25" alt="user">{{ auth()->user()->name }}</a>
 								<ul class="fh5co-sub-menu">
@@ -102,13 +102,13 @@
 
         <div class="pull-left">
 
-            <h2>Daftar Wisata</h2>
+            <h2>Daftar Fasilitas</h2>
 
         </div>
 
         <div class="pull-right">
 
-            <a class="btn btn-success" href="{{ route('wisatas.create') }}"> Tambah Wisata</a>
+            <a class="btn btn-success" href="{{ route('fasils.create') }}"> Tambah Fasilitas</a>
 
         </div>
 
@@ -146,20 +146,20 @@
 
     </tr>
 
-    @foreach ($wisatas as $wisata)
+    @foreach ($fasils as $fasil)
 
     <tr>
 
         <td>{{ ++$i }}</td>
 
-        <td><img src="/image/{{ $wisata->image }}" width="100px"></td>
+        <td><img src="/image/{{ $fasil->image }}" width="100px"></td>
 
-        <td>{{ $wisata->name }}</td>
-		<td><a class="btn btn-info" href="{{ route('wisatas.show',$wisata->id) }}">Lihat detail</a> </td>
+        <td>{{ $fasil->name }}</td>
+		<td><a class="btn btn-info" href="{{ route('fasils.show',$fasil->id) }}">Lihat detail</a> </td>
 			
         <td>
 		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Hapus</button>
-		<a class="btn btn-primary" href="{{ route('wisatas.edit',$wisata->id) }}">Edit</a>
+		<a class="btn btn-primary" href="{{ route('fasils.edit',$fasil->id) }}">Edit</a>
 
 
 		<!-- Modal -->
@@ -177,7 +177,7 @@
       			</div>
       			<div class="modal-footer">
         			
-					<form action="{{ route('wisatas.destroy',$wisata->id) }}" method="POST">
+					<form action="{{ route('fasils.destroy',$fasil->id) }}" method="POST">
                 		
 		                @csrf
         		        @method('DELETE')
@@ -203,7 +203,7 @@
 </div>
 
 
-{!! $wisatas->links() !!}
+{!! $fasils->links() !!}
 
 
 

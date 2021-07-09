@@ -7,20 +7,22 @@
     <meta name="author" content="">
 
     <title>Login | Klinthung Banyumas</title>
+    <link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+	  <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 	  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
     
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap4.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap4.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/signin.css" rel="stylesheet">
+    <link href="{{ asset('css/signin.css') }}" rel="stylesheet">
   </head>
 
   <body class="text-center">
   	<form class="form-signin" method="POST" action="{{ route('login') }}">
         @csrf
-      	<h1 class="h3 mb-3 font-weight-normal">{{ __('Login') }}</h1>
+      	<h1 id="fh5co-logo"><a href="/"><img src="images/logo.png" width="50" height="50" alt="logo"> KLINTHUNG</a></h1><br>
       	<label for="email" class="sr-only">{{ __('E-Mail Address') }}</label>
      		<input type="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Alamat Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 				

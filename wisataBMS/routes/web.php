@@ -12,8 +12,30 @@ use App\Http\Controllers\FasilController;
 
 
 
+Auth::routes();
+
+Route::middleware(['auth'])->group(function () {
+ 
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+ 
+    Route::middleware(['admin'])->group(function () {
+        Route::get('admin', [AdminController::class, 'index']);
+    });
+ 
+    Route::middleware(['user'])->group(function () {
+        Route::get('user', [UserController::class, 'index']);
+    });
+ 
+    Route::get('/logout', function() {
+        Auth::logout();
+        redirect('/login');
+    });
+    
+});
+
 Route::get('/', function () {
-    return view('welcome');
+    $wisata = DB::table('wisatas')->get();
+    return view('welcome',['wisata' => $wisata]);
 });
 Route::get('wisata', function () {
 
@@ -34,28 +56,6 @@ Route::get('fasil', function () {
     return view('fasil', ['fasil' => $fasil]);
 });
 
-
-Auth::routes();
-
-Route::middleware(['auth'])->group(function () {
- 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
- 
-    Route::middleware(['admin'])->group(function () {
-        Route::get('admin', [AdminController::class, 'index']);
-        Route::resource('wisatas', WisataController::class);
-        Route::resource('kuliners', KulinerController::class);
-        Route::resource('fasils', FasilController::class);
-        
-    });
- 
-    Route::middleware(['user'])->group(function () {
-        Route::get('user', [UserController::class, 'index']);
-    });
- 
-    Route::get('/logout', function() {
-        Auth::logout();
-        redirect('/login');
-    });
-    
-});
+Route::resource('wisatas', WisataController::class);
+Route::resource('kuliners', KulinerController::class);
+Route::resource('fasils', FasilController::class);

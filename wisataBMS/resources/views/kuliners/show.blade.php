@@ -6,7 +6,9 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Admin Page | Klinthung Banyumas</title>
+	<title>{{ $kuliner->name }}  | Klinthung Banyumas</title>
+	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+	<link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="" />
 
@@ -66,12 +68,28 @@
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
+						@if(Auth::check()==0)
+							<li ><a href="/">Home</a></li>
+							<li class=""><a href="/wisata">Wisata</a></li>
+                            <li class="active"><a href="/kuliner">Kuliner</a></li>
+                            <li class=""><a href="/fasil">Fasilitas</a></li>
+							@elseif(Auth::check()==1 && Auth::user()->role == "admin")
 							<li class=""><a href="/admin">Home</a></li>
 							<li class=""><a href="/wisatas">Wisata</a></li>
                             <li class="active"><a href="/kuliners">Kuliner</a></li>
                             <li class=""><a href="/fasils">Fasilitas</a></li>
+							@elseif(Auth::check()==1 && Auth::user()->role == "user")
+							<li ><a href="/user">Home</a></li>
+							<li class=""><a href="/wisata">Wisata</a></li>
+                            <li class="active"><a href="/kuliner">Kuliner</a></li>
+                            <li class=""><a href="/fasil">Fasilitas</a></li>
+							@endif
                             <li>
+								@if(Auth::check()==0)
+								<a class="btn btn-primary " href="/login">Login</a>
+								@elseif(Auth::check()==1)
 								<a href="#" class="fh5co-sub-ddown"><img src="{{ asset('images/user.png') }}" width="25" height="25" alt="user">{{ auth()->user()->name }}</a>
+								
 								<ul class="fh5co-sub-menu">
 									<li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -83,8 +101,9 @@
                                         @csrf
                                         </form>
                                     </li>
-								</ul>
+								</ul>	
 							</li>
+							@endif
 						</ul>
 					</nav>
 				</div>
@@ -122,12 +141,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center">
-							<p class="fh5co-social-icons">
-								<a href="#"><i class="icon-twitter2"></i></a>
-								<a href="#"><i class="icon-facebook2"></i></a>
-								<a href="https://www.instagram.com/pemkab_banyumas/"><i class="icon-instagram"></i></a>
-								<a href="#"><i class="icon-youtube"></i></a>
-							</p>
+							
 							<p>Copyright ©2021 All rights reserved | Dinkominfo Kabupaten Banyumas</p>
 						</div>
 					</div>

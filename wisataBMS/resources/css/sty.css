@@ -1837,6 +1837,9 @@ div.cs-select span {
   -o-transition: 0.2s;
   transition: 0.2s;
 }
+.textcenter{
+  text-align: center;
+}
 .fh5co-nav-toggle.dark i {
   position: relative;
   color: #000;
@@ -1995,5 +1998,15 @@ div.cs-select span {
   z-index: 9999;
   background: url(../images/hourglass.svg) center no-repeat #222222;
 }
+.filterDiv {
+  display: none;
+}
 
+.show {
+  display: block;
+}
+.btn.active1 {
+  background-color: #666;
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */

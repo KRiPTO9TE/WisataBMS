@@ -4,7 +4,7 @@
 
 @section('content')
 
-
+<br><br>
 <div class="container">
 
 
@@ -100,9 +100,14 @@
         <div class="form-group">
 
             <strong>Category:</strong>
+            <select id="category" name="category">
+                <option value="">Pilih salah satu</option>
+                <option value="Cafe">Cafe</option>
+                <option value="Modern">Modern</option>
+                <option value="Tradisional">Tradisional</option>
+            </select>
 
-            <input type="text" name="category" class="form-control" placeholder="Category">
-
+            <!--<input type="text" name="category" class="form-control" placeholder="Category">-->
         </div>
 
     </div>

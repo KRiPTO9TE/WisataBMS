@@ -3,6 +3,7 @@
      
 
 @section('content')
+<br><br>
 <div class = "container">
 
     <div class="row">
@@ -101,9 +102,15 @@
                 <div class="form-group">
 
                     <strong>Category:</strong>
+                    <select id="category" name="category">
+                        <option value="{{ $kuliner->category }}">{{ $kuliner->category }}</option>
+                        <option value="Cafe">Cafe</option>
+                        <option value="Modern">Modern</option>
+                        <option value="Tradisional">Tradisional</option>
+                    </select>
 
-                    <input type="text" name="category" value="{{ $kuliner->category }}" class="form-control" placeholder="Category">
-
+                   <!-- <input type="text" name="category" value="{{ $kuliner->category }}" class="form-control" placeholder="Category">
+-->
                 </div>
 
             </div>

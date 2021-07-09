@@ -101,9 +101,17 @@
                 <div class="form-group">
 
                     <strong>Category:</strong>
-
-                    <input type="text" name="category" value="{{ $fasil->category }}" class="form-control" placeholder="Category">
-
+                    <select id="category" name="category">
+                        <option value="{{ $fasil->category }}">{{ $fasil->category }}</option>
+                        <option value="ATM & Bank">ATM & Bank</option>
+                        <option value="Pendidikan">Pendidikan</option>
+                        <option value="Penginapan">Penginapan</option>
+                        <option value="Rumah Sakit & Klinik">Rumah Sakit & Klinik</option>
+                        <option value="SPBU">SPBU</option>
+                        <option value="Transportasi">Transportasi</option>
+                    </select>
+                  <!--  <input type="text" name="category" value="{{ $fasil->category }}" class="form-control" placeholder="Category">
+-->
                 </div>
 
             </div>

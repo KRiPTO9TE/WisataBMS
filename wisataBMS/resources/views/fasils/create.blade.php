@@ -100,9 +100,18 @@
         <div class="form-group">
 
             <strong>Category:</strong>
+            <select id="category" name="category">
+                <option value="">Pilih Salah Satu</option>
+                <option value="ATM & Bank">ATM & Bank</option>
+                <option value="Pendidikan">Pendidikan</option>
+                <option value="Penginapan">Penginapan</option>
+                <option value="Rumah Sakit & Klinik">Rumah Sakit & Klinik</option>
+                <option value="SPBU">SPBU</option>
+                <option value="Transportasi">Transportasi</option>
+            </select>
 
-            <input type="text" name="category" class="form-control" placeholder="Category">
-
+           <!-- <input type="text" name="category" class="form-control" placeholder="Category">
+-->
         </div>
 
     </div>

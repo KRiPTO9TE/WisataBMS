@@ -1580,6 +1580,7 @@ div.cs-select span {
   color: rgba(0, 0, 0, 0.6);
 }
 
+
 #fh5co-start-project-section {
   padding: 7em 0;
   background: #F64E8B;
@@ -1988,5 +1989,15 @@ div.cs-select span {
   z-index: 9999;
   background: url(../images/hourglass.svg) center no-repeat #222222;
 }
+.filterDiv {
+  display: none;
+}
 
+.show {
+  display: block;
+}
+.btn.active1 {
+  background-color: #666;
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */

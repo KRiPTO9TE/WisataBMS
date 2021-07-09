@@ -8,6 +8,8 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Kuliner | Klinthung Banyumas</title>
+	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+	<link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="" />
 
@@ -28,27 +30,28 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	
+
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 	<!-- Superfish -->
-	<link rel="stylesheet" href="css/superfish.css">
+	<link rel="stylesheet" href="{{ asset('css/superfish.css') }}">
 	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}"> 
 	<!-- Date Picker -->
-	<link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 	<!-- CS Select -->
-	<link rel="stylesheet" href="css/cs-select.css">
-	<link rel="stylesheet" href="css/cs-skin-border.css">
+	<link rel="stylesheet" href="{{ asset('css/cs-select.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/cs-skin-border.css') }}">
 	
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 
 	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -63,46 +66,38 @@
 			<div class="container">
 				<div class="nav-header">
 					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="/"><img src="images/logo.png" width="35" height="35" alt="logo"> KLINTHUNG</a></h1>
+					<h1 id="fh5co-logo"><a href="#"><img src="images/logo.png" width="35" height="35" alt="logo"> KLINTHUNG</a></h1>
 					<!-- START #fh5co-menu-wrap -->
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
+						@if(Auth::check()==0)
 							<li ><a href="/">Home</a></li>
-							<li >
-								<a href="/wisata" class="fh5co-sub-ddown">Objek Wisata</a>
-								<ul class="fh5co-sub-menu">
-                                    <li><a href="/wisata">Semua Wisata</a></li>
-                                    <li><a href="#">Hiburan</a></li>
-									<li><a href="#">Wisata Keluarga</a></li>
-									<li><a href="#">Wisata Taman</a></li>
-								</ul>
-							</li>
-                            <li class="active">
-								<a href="/kuliner" class="fh5co-sub-ddown">Kuliner</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="/kuliner">Semua Kuliner</a></li>
-									<li><a href="#">Cafe</a></li>
-									<li><a href="#">Kuliner Modern</a></li>
-									<li><a href="#">Kuliner Tradisional</a></li>
-								</ul>
-							</li>
+							@elseif(Auth::check()==1 && Auth::user()->role == "user")
+							<li class=""><a href="/">Home</a></li>
+							@endif
+							<li class=""><a href="/wisata">Wisata</a></li>
+                            <li class="active"><a href="/kuliner">Kuliner</a></li>
+                            <li class=""><a href="/fasil">Fasilitas</a></li>
                             <li>
-								<a href="/fasil" class="fh5co-sub-ddown">Fasilitas</a>
-								<ul class="fh5co-sub-menu">
-									<li><a href="/fasil">Semua Fasilitas</a></li>
-									<li><a href="#">ATM & Bank</a></li>
-                                    <li><a href="#">Pusat Pendidikan</a></li>
-                                    <li><a href="#">Penginapan</a></li>
-                                    <li><a href="#">Rumah Sakit & Klinik</a></li>
-                                    <li><a href="#">SPBU</a></li>
-                                    <li><a href="#">Transportasi</a></li>
-								</ul>
-							</li>
-							<li class=""><a href="#">Berita</a></li>
-                            <li>
+								@if(Auth::check()==0)
 								<a class="btn btn-primary " href="/login">Login</a>
+								@elseif(Auth::check()==1 && Auth::user()->role == "user")
+								<a href="#" class="fh5co-sub-ddown"><img src="{{ asset('images/user.png') }}" width="25" height="25" alt="user">{{ auth()->user()->name }}</a>
 								
+								<ul class="fh5co-sub-menu">
+									<li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                            {{ __('Logout') }}
+                                        </a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                        </form>
+                                    </li>
+								</ul>	
 							</li>
+							@endif
 						</ul>
 					</nav>
 				</div>
@@ -119,24 +114,37 @@
 					</div>
 				</div>
 			</div>
-            
+            <div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center  animate-box">
+				  	<div id="myBtnContainer">
+  						<button class="btn active" onclick="filterSelection('all')"> Show all</button>
+  						<button class="btn" onclick="filterSelection('Cafe')"> Cafe</button>
+  						<button class="btn" onclick="filterSelection('Modern')"> Modern</button>
+  						<button class="btn" onclick="filterSelection('Tradisional')"> Tradisional</button>
+					</div>
+					<br><br>
+				</div>
+  				
+			</div> 
+            <br><br>
 			<div class="container">
             <div class="row row-bottom-padded-md">
             
             
                 @foreach($kuliner as $key => $data)
-                
+                <div class="filterDiv {{$data->category}}">
 					<div class="col-lg-4 col-md-4 col-sm-6">
-						<div class="fh5co-blog animate-box">
-							<a href="#"><img class="img-responsive" src="image/{{$data->image}}" alt=""></a>
+						<div class="fh5co-blog animate-box1">
+							<a href="/kuliners/{{$data->id}}"><img class="img-responsive" src="image/{{$data->image}}" style="width:400px;height:225px;" alt=""></a>
 							<div class="blog-text">
 								<div class="prod-title">
-									<h3><a href="#">{{$data->name}}</a></h3>
+									<h3><a href="/kuliners/{{$data->id}}">{{$data->name}}</a></h3>
 									<span class="posted_by">{{$data->category}}</span>
-									<p><a href="#">Learn More...</a></p>
+									<p><a href="/kuliners/{{$data->id}}">Lihat Selengkapnya</a></p>
 								</div>
 							</div> 
 						</div>
+					</div>
 					</div>
 				@endforeach
                 
@@ -151,12 +159,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 text-center">
-							<p class="fh5co-social-icons">
-								<a href="#"><i class="icon-twitter2"></i></a>
-								<a href="#"><i class="icon-facebook2"></i></a>
-								<a href="https://www.instagram.com/pemkab_banyumas/"><i class="icon-instagram"></i></a>
-								<a href="#"><i class="icon-youtube"></i></a>
-							</p>
+							
 							<p>Copyright ©2021 All rights reserved | Dinkominfo Kabupaten Banyumas</p>
 						</div>
 					</div>
@@ -173,32 +176,77 @@
 	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
+	<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
+
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);     
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
     
-	<script src="js/jquery.min.js"></script>
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
 	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
 	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<script src="js/sticky.js"></script>
+	<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
+	<script src="{{ asset('js/sticky.js') }}"></script>
 
 	<!-- Stellar -->
-	<script src="js/jquery.stellar.min.js"></script>
+	<script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
 	<!-- Superfish -->
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.js"></script>
+	<script src="{{ asset('js/hoverIntent.js') }}"></script>
+	<script src="{{ asset('js/superfish.js') }}"></script>
 	<!-- Magnific Popup -->
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/magnific-popup-options.js"></script>
+	<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
+	<script src="{{ asset('js/magnific-popup-options.js') }}"></script>
 	<!-- Date Picker -->
-	<script src="js/bootstrap-datepicker.min.js"></script>
+	<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 	<!-- CS Select -->
-	<script src="js/classie.js"></script>
-	<script src="js/selectFx.js"></script>
+	<script src="{{ asset('js/classie.js') }}"></script>
+	<script src="{{ asset('js/selectFx.js') }}"></script>
 	
 	<!-- Main JS -->
-	<script src="js/main.js"></script>
+	<script src="{{ asset('js/main.js') }}"></script>
+
 
 	</body>
 </html>

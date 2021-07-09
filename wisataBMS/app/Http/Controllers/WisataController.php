@@ -30,13 +30,13 @@ class WisataController extends Controller
 
     {
 
-        $wisatas = Wisata::latest()->paginate(5);
+        $wisatas = Wisata::latest()->paginate(1000);
 
     
 
         return view('wisatas.index',compact('wisatas'))
 
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 1000);
 
     }
 

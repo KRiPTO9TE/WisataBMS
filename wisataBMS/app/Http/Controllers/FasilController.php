@@ -30,13 +30,13 @@ class FasilController extends Controller
 
     {
 
-        $fasils = Fasil::latest()->paginate(5);
+        $fasils = Fasil::latest()->paginate(999);
 
     
 
         return view('fasils.index',compact('fasils'))
 
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 999);
 
     }
 

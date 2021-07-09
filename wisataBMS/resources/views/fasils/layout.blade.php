@@ -4,10 +4,19 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	@if(Auth::check()==0)
+	<a href="/login">login</a>
+	<title>login to see this content</title>
+	@elseif (Auth::check()==1 && (Auth::user()->role != "admin"))
+	<a href="/login">login</a>
+	<title>login to see this content</title>
+	@elseif (Auth::check()==1 && (Auth::user()->role == "admin"))
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Admin Page | Klinthung Banyumas</title>
+	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
+	<link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="" />
 
@@ -56,6 +65,8 @@
 
 	</head>
 	<body>
+
+	
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
 
@@ -91,7 +102,7 @@
 				</div>
 			</div>
 		</header>
-
+	
   
 
   
@@ -100,8 +111,8 @@
 
     @yield('content')
 
-
-
+	
+	@endif
    
 	
 

@@ -30,13 +30,13 @@ class KulinerController extends Controller
 
     {
 
-        $kuliners = Kuliner::latest()->paginate(5);
+        $kuliners = Kuliner::latest()->paginate(999);
 
     
 
         return view('kuliners.index',compact('kuliners'))
 
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+            ->with('i', (request()->input('page', 1) - 1) * 999);
 
     }
 

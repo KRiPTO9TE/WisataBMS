@@ -84,7 +84,7 @@
 
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-3 col-sm-3 col-md-3">
 
                 <div class="form-group">
 
@@ -92,11 +92,82 @@
 
                     <input type="file" name="image" class="form-control" placeholder="image">
 
-                    <img src="/image/{{ $wisata->image }}" width="300px">
+                    <img src="/image/{{ $wisata->image }}" width="75px">
 
                 </div>
 
             </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+
+                <div class="form-group">
+
+                    <strong>Image:</strong>
+
+                    <input type="file" name="image1" class="form-control" placeholder="image">
+
+                    <img src="/image/{{ $wisata->image1 }}" width="75px">
+
+                </div>
+
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+
+                <div class="form-group">
+
+                    <strong>Image:</strong>
+
+                    <input type="file" name="image2" class="form-control" placeholder="image">
+
+                    <img src="/image/{{ $wisata->image2 }}" width="75px">
+
+                </div>
+
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+
+                <div class="form-group">
+
+                    <strong>Image:</strong>
+
+                    <input type="file" name="image3" class="form-control" placeholder="image">
+
+                    <img src="/image/{{ $wisata->image3 }}" width="75px">
+
+                </div>
+
+            </div>
+            <br><br>
+    
+    <div class="col-xs-12 col-sm-12 col-md-12">
+    <strong>Jam Operasional</strong><br>
+    <br><strong>Weekdays</strong>
+        
+        <div class="form-group">
+
+            
+            <div class="col-xs-6 col-sm-6 ">
+                
+                <div class="form-group">
+                    <strong>Weedays</strong>
+                    <strong>Buka-Tutup</strong>
+
+                    <input type="text" name="btdays" value="{{ $wisata->btdays }}" class="form-control" placeholder="jj.mm-jj.mm">
+
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 ">
+                
+                <div class="form-group">
+                <strong>Weekend</strong>
+                    <strong>Buka-Tutup</strong>
+
+                    <input type="text" name="btend" value="{{ $wisata->btend }}" class="form-control" placeholder="jj.mm-jj.mm">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
             <div class="col-xs-12 col-sm-12 col-md-12">
 
                 <div class="form-group">
@@ -108,24 +179,103 @@
                         <option value="Taman">Taman</option>
                         <option value="Keluarga">Keluarga</option>
                         <option value="Hiburan">Hiburan</option>
-                    </select>
+                    </select><br><br>
                 </div>
 
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
+    <strong>Maps</strong>
+        <div class="form-group">
 
+            
+            <div class="col-xs-6 col-sm-6 ">
+                
                 <div class="form-group">
 
-                    <strong>Maps:</strong>
-                    
-                    <input type="text" name="maps" value="{{ $wisata->maps }}" class="form-control" placeholder="Maps">
+                    <strong>Latitude</strong>
+
+                    <input type="text" name="mapslat" value="{{ $wisata->mapslat }}" class="form-control" placeholder="Latitude">
 
                 </div>
-
             </div>
+            <div class="col-xs-6 col-sm-6 ">
+                
+                <div class="form-group">
+
+                    <strong>Longitude</strong>
+
+                    <input type="text" name="mapslong" value="{{ $wisata->mapslong }}" class="form-control" placeholder="Longitude">
+
+                </div>
+            </div>
+        </div><br><br>
+        
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+        <div class="form-group">
+
+            <strong>Alamat:</strong>
+
+            <input type="text" name="alamat" value="{{ $wisata->alamat }}" class="form-control" placeholder="alamat">
+
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+    <strong>Harga Tiket Masuk</strong>
+        <div class="form-group">
+
+            
+            <div class="col-xs-6 col-sm-6 ">
+                
+                <div class="form-group">
+
+                    <strong>Anak anak</strong>
+
+                    <input type="text" name="tika" value="{{ $wisata->tika }}" class="form-control" placeholder="HTM Anak anak">
+
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 ">
+                
+                <div class="form-group">
+
+                    <strong>Dewasa</strong>
+
+                    <input type="text" name="tikd" value="{{ $wisata->tikd }}" class="form-control" placeholder="HTM Dewasa">
+
+                </div>
+            </div>
+        </div><br><br>
+        
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+        <div class="form-group">
+
+            <strong>Web:</strong>
+
+            <input type="text" name="web" value="{{ $wisata->web }}" class="form-control" placeholder="alamat Web">
+
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+<div class="form-group">
+
+    <strong>Telefon:</strong>
+
+    <input type="text" name="telefon" value="{{ $wisata->telefon }}" class="form-control" placeholder="No Telefon">
+
+</div>
+
+</div>
+
             
 
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-right">
 
               <button type="submit" class="btn btn-primary">Submit</button>
 

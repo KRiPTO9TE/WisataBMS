@@ -34,8 +34,19 @@ class CreateWisatasTable extends Migration
             $table->string('name');
             $table->text('detail');
             $table->string('image');
+            $table->string('image1');
+            $table->string('image2');
+            $table->string('image3');
+            $table->string('btdays');
+            $table->string('btend');
             $table->string('category');
-            $table->string('maps', 1999);
+            $table->string('mapslat');
+            $table->string('mapslong');
+            $table->string('alamat');
+            $table->string('tika');
+            $table->string('tikd');
+            $table->string('web');
+            $table->string('telefon');
             $table->timestamps();
 
         });

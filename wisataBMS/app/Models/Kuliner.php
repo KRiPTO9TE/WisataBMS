@@ -17,7 +17,22 @@ class Kuliner extends Model
 
     protected $fillable = [
 
-        'name', 'detail', 'image', 'category', 'maps'
+        'name', 
+
+        'detail', 
+
+        'image','image1','image2','image3',
+
+        'btdays','btend', 
+
+        'category', 
+
+        'mapslat','mapslong',
+
+        'alamat',
+
+        'web',
+        'telefon'
 
     ];
 }

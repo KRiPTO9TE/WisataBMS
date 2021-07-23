@@ -85,10 +85,22 @@ class KulinerController extends Controller
             'detail' => 'required',
 
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             
+            'btdays' => 'required',
+            'btend' => 'required',
+
             'category' => 'required',
             
-            'maps' => 'required',
+            'mapslat' => 'required',
+            'mapslong' => 'required',
+
+            'alamat' => 'required',
+
+            'web' => 'required',
+            'telefon' => 'required',
 
         ]);
 
@@ -109,7 +121,39 @@ class KulinerController extends Controller
             $input['image'] = "$profileImage";
 
         }
+        if ($image1 = $request->file('image1')) {
 
+            $destinationPath1 = 'image/';
+
+            $profileImage1 = date('YmdHis77') . "." . $image1->getClientOriginalExtension();
+
+            $image1->move($destinationPath1, $profileImage1);
+
+            $input['image1'] = "$profileImage1";
+
+        }
+        if ($image2 = $request->file('image2')) {
+
+            $destinationPath2 = 'image/';
+
+            $profileImage2 = date('YmdHis66') . "." . $image2->getClientOriginalExtension();
+
+            $image2->move($destinationPath2, $profileImage2);
+
+            $input['image2'] = "$profileImage2";
+
+        }
+        if ($image3 = $request->file('image3')) {
+
+            $destinationPath3 = 'image/';
+
+            $profileImage3 = date('YmdHis3') . "." . $image3->getClientOriginalExtension();
+
+            $image3->move($destinationPath3, $profileImage3);
+
+            $input['image3'] = "$profileImage3";
+
+        }
     
 
         Kuliner::create($input);
@@ -191,10 +235,19 @@ class KulinerController extends Controller
             'name' => 'required',
 
             'detail' => 'required',
+            
+            'btdays' => 'required',
+            'btend' => 'required',
 
             'category' => 'required',
             
-            'maps' => 'required',
+            'mapslat' => 'required',
+            'mapslong' => 'required',
+
+            'alamat' => 'required',
+            
+            'web' => 'required',
+            'telefon' => 'required',
         ]);
 
   
@@ -216,6 +269,51 @@ class KulinerController extends Controller
         }else{
 
             unset($input['image']);
+
+        }
+        if ($image1 = $request->file('image1')) {
+
+            $destinationPath1 = 'image/';
+
+            $profileImage1 = date('YmdHis77') . "." . $image1->getClientOriginalExtension();
+
+            $image1->move($destinationPath1, $profileImage1);
+
+            $input['image1'] = "$profileImage1";
+
+        }else{
+
+            unset($input['image1']);
+
+        }
+        if ($image2 = $request->file('image2')) {
+
+            $destinationPath2 = 'image/';
+
+            $profileImage2 = date('YmdHis66') . "." . $image2->getClientOriginalExtension();
+
+            $image2->move($destinationPath2, $profileImage2);
+
+            $input['image2'] = "$profileImage2";
+
+        }else{
+
+            unset($input['image2']);
+
+        }
+        if ($image3 = $request->file('image3')) {
+
+            $destinationPath3 = 'image/';
+
+            $profileImage3 = date('YmdHis3') . "." . $image3->getClientOriginalExtension();
+
+            $image3->move($destinationPath3, $profileImage3);
+
+            $input['image3'] = "$profileImage3";
+
+        }else{
+
+            unset($input['image3']);
 
         }
 

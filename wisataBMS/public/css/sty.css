@@ -1984,3 +1984,120 @@ div.cs-select span {
 }
 
 /*# sourceMappingURL=style.css.map */
+/*-- 16. contact css 
+--------------------------------------- --*/
+
+.contact-form-wrapper .container {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  -o-border-radius: 0px;
+  border-radius: 0px;
+  position: relative;
+  top: -100px;
+}
+
+.contact-form-wrapper .row {
+  margin: 0;
+}
+
+.contact-form-wrapper .flex-container>[class^="col-"] {
+  padding: 0;
+}
+
+.contact-form-wrapper .flex-container {
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  -webkit-box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+  -moz-box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+  -ms-box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+  -o-box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, .1);
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+}
+
+.contact-form-wrapper h2 {
+  border: none;
+}
+
+.contact-form-wrapper form {
+  border: none;
+}
+
+.contact-form-wrapper .customised-formgroup {
+  margin-bottom: 15px;
+}
+
+.contact-form-wrapper .btn {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.contact-form-wrapper .customise-form {
+  padding: 45px;
+}
+
+.contact-form-wrapper .customise-form h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.contact-form-wrapper .contact-information {
+  background: #F78536;
+  height: 100%;
+  padding: 45px 60px;
+  color: #ffffff;
+  font-weight: 300;
+  -webkit-border-radius: 0 0px 0px 0;
+  -moz-border-radius: 0 0px 0px 0;
+  -ms-border-radius: 0 0px 0px 0;
+  border-radius: 0 0px 0px 0;
+}
+
+.contact-form-wrapper .contact-information h3 {
+  color: #ffffff;
+}
+
+.contact-form-wrapper .contact-information div:not(:last-child) {
+  margin-bottom: 34px;
+}
+
+.contact-form-wrapper .contact-information div span,
+.contact-form-wrapper .contact-information div a {
+  display: block;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.contact-form-wrapper .contact-information div a:hover {
+  opacity: .8;
+}
+
+.contact-form-wrapper .contact-information .social-icons {
+  margin: 8px 0 0;
+}
+
+.contact-form-wrapper .contact-information .social-icons li {
+  padding: 3px;
+}
+
+.contact-form-wrapper .contact-information .social-icons li a i {
+  font-size: 14px;
+  line-height: 25px;
+  width: 25px;
+  background: #ffffff;
+  display: block;
+  color: #F78536;
+  text-align: center;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border-radius: 50%;
+}
+

@@ -3,6 +3,7 @@
      
 
 @section('content')
+<br><br>
 <div class = "container">
 
     <div class="row">
@@ -11,7 +12,7 @@
 
             <div class="pull-left">
 
-                <h2>Edit fasilitas</h2>
+                <h2>Edit Fasilitas</h2>
 
             </div>
 
@@ -83,19 +84,90 @@
 
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-3 col-sm-3 col-md-3">
+
+                <div class="form-group">
+
+                    <strong>Image Cover:</strong>
+
+                    <input type="file" name="image" class="form-control" placeholder="image">
+
+                    <img src="/image/{{ $fasil->image }}" width="75px">
+
+                </div>
+
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
 
                 <div class="form-group">
 
                     <strong>Image:</strong>
 
-                    <input type="file" name="image" class="form-control" placeholder="image">
+                    <input type="file" name="image1" class="form-control" placeholder="image">
 
-                    <img src="/image/{{ $fasil->image }}" width="300px">
+                    <img src="/image/{{ $fasil->image1 }}" width="75px">
 
                 </div>
 
             </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+
+                <div class="form-group">
+
+                    <strong>Image:</strong>
+
+                    <input type="file" name="image2" class="form-control" placeholder="image">
+
+                    <img src="/image/{{ $fasil->image2 }}" width="75px">
+
+                </div>
+
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3">
+
+                <div class="form-group">
+
+                    <strong>Image:</strong>
+
+                    <input type="file" name="image3" class="form-control" placeholder="image">
+
+                    <img src="/image/{{ $fasil->image3 }}" width="75px">
+
+                </div>
+
+            </div>
+            <br><br>
+    
+    <div class="col-xs-12 col-sm-12 col-md-12">
+    <strong>Jam Operasional</strong><br>
+    <br><strong>Weekdays</strong>
+        
+        <div class="form-group">
+
+            
+            <div class="col-xs-6 col-sm-6 ">
+                
+                <div class="form-group">
+                    <strong>Weedays</strong>
+                    <strong>Buka-Tutup</strong>
+
+                    <input type="text" name="btdays" value="{{ $fasil->btdays }}" class="form-control" placeholder="jj.mm-jj.mm">
+
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 ">
+                
+                <div class="form-group">
+                <strong>Weekend</strong>
+                    <strong>Buka-Tutup</strong>
+
+                    <input type="text" name="btend" value="{{ $fasil->btend }}" class="form-control" placeholder="jj.mm-jj.mm">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
             <div class="col-xs-12 col-sm-12 col-md-12">
 
                 <div class="form-group">
@@ -109,26 +181,76 @@
                         <option value="Rumah Sakit & Klinik">Rumah Sakit & Klinik</option>
                         <option value="SPBU">SPBU</option>
                         <option value="Transportasi">Transportasi</option>
-                    </select>
-                  <!--  <input type="text" name="category" value="{{ $fasil->category }}" class="form-control" placeholder="Category">
--->
+                    </select><br><br>
                 </div>
 
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
+    <strong>Maps</strong>
+        <div class="form-group">
 
+            
+            <div class="col-xs-6 col-sm-6 ">
+                
                 <div class="form-group">
 
-                    <strong>Maps:</strong>
+                    <strong>Latitude</strong>
 
-                    <input type="text" name="maps" value="{{ $fasil->maps }}" class="form-control" placeholder="Maps">
+                    <input type="text" name="mapslat" value="{{ $fasil->mapslat }}" class="form-control" placeholder="Latitude">
 
                 </div>
-
             </div>
+            <div class="col-xs-6 col-sm-6 ">
+                
+                <div class="form-group">
+
+                    <strong>Longitude</strong>
+
+                    <input type="text" name="mapslong" value="{{ $fasil->mapslong }}" class="form-control" placeholder="Longitude">
+
+                </div>
+            </div>
+        </div><br><br>
+        
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+        <div class="form-group">
+
+            <strong>Alamat:</strong>
+
+            <input type="text" name="alamat" value="{{ $fasil->alamat }}" class="form-control" placeholder="alamat">
+
+        </div>
+
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+        <div class="form-group">
+
+            <strong>Web:</strong>
+
+            <input type="text" name="web" value="{{ $fasil->web }}" class="form-control" placeholder="alamat Web">
+
+        </div>
+
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+<div class="form-group">
+
+    <strong>Telefon:</strong>
+
+    <input type="text" name="telefon" value="{{ $fasil->telefon }}" class="form-control" placeholder="No Telefon">
+
+</div>
+
+</div>
+
             
 
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <div class="col-xs-12 col-sm-12 col-md-12 text-right">
 
               <button type="submit" class="btn btn-primary">Submit</button>
 

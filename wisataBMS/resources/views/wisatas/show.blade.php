@@ -53,6 +53,8 @@
 	<!-- Modernizr JS -->
 	<script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
 	<!-- FOR IE9 below -->
+	
+	
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
@@ -111,7 +113,8 @@
 				</div>
 			</div>
 		</header>
-        <div id="fh5co-tours" class="fh5co-section-gray">
+
+		<div id="fh5co-tours" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
@@ -119,23 +122,123 @@
 						<p>Pilihan Wisata di Kabupaten Banyumas dari hiburan sampai wisata keluarga yang siap untuk menemani liburanmu!</p>
 					</div>
 				</div>
+				<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators ">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+	<li data-target="#myCarousel" data-slide-to="3"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner animate-box">
+    <div class="item active ">
+      <img src="/image/{{ $wisata->image }}"width="1280" height="720" alt="Los Angeles">
+    </div>
+
+    <div class="item ">
+      <img src="/image/{{ $wisata->image1 }}"width="1280" height="720" alt="Los Angeles">
+    </div>
+
+    <div class="item ">
+      <img src="/image/{{ $wisata->image2 }}"width="1280" height="720" alt="Los Angeles">
+    </div>
+	<div class="item ">
+      <img src="/image/{{ $wisata->image3 }}"width="1280" height="720" alt="Los Angeles">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control animate-box" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control animate-box" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div><br><br><br>
 				<div class="row">
 					<div class="col-md-12 animate-box">
 						<h2 class="heading-title">{{ $wisata->name }}</h2>
 					</div>
-					<div class="col-md-6 animate-box">
-						<p>{{ $wisata->detail }}</p>
+					<div class="col-md-12 animate-box">
+						<p>{{ $wisata->detail }}</p><br><br>
 						
-					</div>
-					<div class="col-md-6 animate-box">
-						<img class="img-responsive" src="/image/{{ $wisata->image }}" alt="travel"><br><br>
-					</div>
-                    <div class="col-md-12 animate-box">
-                        <iframe class="centermap" src="{{ $wisata->maps }}" width="1140" height="450" style="border:0;" allowfullscreen="0" loading="lazy"></iframe>
-					</div>
 				</div>
+				
+				
+				</div>
+				
 			</div>
 		</div>
+
+		<div id="map" style="width: full; height: 560px;"></div>
+		<!--<div style="width: full; height: 560px;">
+					{!! Mapper::render() !!}
+		</div>-->
+		<section class="common-form-section contact-form-wrapper" id="footer-contact">
+        <div class="container">
+            <!--end section title -->
+            <div class="row">
+                <div class="flex-container clearfix">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="customise-form contact-form clearfix">
+                            
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h3>Harga Tiket Masuk</h3>
+                                    </div>
+									<div class="col-xs-6 ">
+										<h4>Anak Anak</h4>
+										<p>{{ $wisata->tika }}</p>
+                                    </div>
+									<div class="col-xs-6">
+										<h4>Dewasa</h4>
+										<p>{{ $wisata->tikd }}</p><br>
+                                    </div>
+                                </div>
+								<div class="row">
+                                    <div class="col-sm-12">
+                                        <h3>Jam Operasional</h3>
+                                    </div>
+									<div class="col-xs-6 ">
+										<h4>Weekdays</h4>
+										<p>{{ $wisata->btdays }}</p>
+                                    </div>
+									<div class="col-xs-6">
+										<h4>Weekend</h4>
+										<p>{{ $wisata->btend }}</p><br>
+                                    </div>
+                                </div>
+								<div class="row">
+                                    <div class="col-sm-12">
+                                        <h3>Kunjungi kami di</h3>
+										<p>{{ $wisata->alamat }} </p>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="contact-information">
+                            <h3>Kontak</h3>
+                            <div>Nomer Telefon
+                                <div><a href="tel:{{ $wisata->telefon }}">{{ $wisata->telefon }}</a></div>
+                            </div>
+                            <div>Web<a href="{{ $wisata->web }}">{{ $wisata->web }}</a></div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
 
 
         <footer>
@@ -158,7 +261,15 @@
 	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
-
+	<script src="http://maps.google.com/maps/api/js?key=AIzaSyA-R3eTNSF8z5mL5KmRT8mJJcENDBW5qMU"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
+	<script>
+ 		var map = new GMaps({
+  		el: '#map',
+  		lat: {{ $wisata->mapslat }},
+    	lng: {{ $wisata->mapslong }}
+  	});
+	</script>
 
 	<script src="{{ asset('js/jquery.min.js') }}"></script>
 	<!-- jQuery Easing -->

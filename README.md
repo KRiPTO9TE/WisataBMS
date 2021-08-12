@@ -1,18 +1,21 @@
-## Pre-Install
-Unduh composer terlebih dahulu di https://getcomposer.org/
-Setelah melakukan clone repo ini, masukan command berikut di dalam terminal
-```bash
-composer install
-npm install
-npm run
-npm dev
-```
-
 ## Instalasi
 
 Buat database kosong dengan nama: 
 ```bash
 wisataBMS
+```
+Unduh composer terlebih dahulu di https://getcomposer.org/
+Setelah melakukan clone repo ini, masukan command berikut di dalam terminal
+```bash
+composer install
+```
+Kemudian rename file 
+```bash
+.env.example
+```
+Menjadi
+```bash
+.env
 ```
 Lalu konfigurasi file .env dan lakukan migrate serta seeding:
 ```bash

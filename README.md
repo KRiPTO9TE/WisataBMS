@@ -1,6 +1,16 @@
+## Pre-Install
+Unduh composer terlebih dahulu di https://getcomposer.org/
+Setelah melakukan clone repo ini, masukan command berikut di dalam terminal
+```bash
+composer install
+npm install
+npm run
+npm dev
+```
+
 ## Instalasi
 
-Setelah melakukan clone repo ini, buat database kosong dengan nama: 
+Buat database kosong dengan nama: 
 ```bash
 wisataBMS
 ```

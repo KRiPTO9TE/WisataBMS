@@ -27,7 +27,7 @@ class Fasil extends Model
 
         'category', 
 
-        'mapslat','mapslong',
+        'mapslat',
 
         'alamat',
 

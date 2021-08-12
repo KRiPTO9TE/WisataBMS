@@ -132,8 +132,7 @@
             <br><br>
 			<div class="container">
             <div class="row row-bottom-padded-md">
-            
-            
+
                 @foreach($wisata as $key => $data)
 				<div class="filterDiv {{$data->category}}">
 					<div class="col-lg-4 col-md-4 col-sm-6">
@@ -143,6 +142,8 @@
 								<div class="prod-title">
 									<h3><a href="/wisatas/{{$data->id}}">{{$data->name}}</a></h3>
 									<span class="posted_by">Wisata {{$data->category}}</span>
+									
+									
 									<p><a href="/wisatas/{{$data->id}}">Lihat Selengkapnya</a></p>
 								</div>
 							</div> 
@@ -222,6 +223,7 @@ for (var i = 0; i < btns.length; i++) {
     this.className += " active";
   });
 }
+
 </script>
     
 	<script src="{{ asset('js/jquery.min.js') }}"></script>

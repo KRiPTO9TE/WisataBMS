@@ -27,7 +27,7 @@ class Kuliner extends Model
 
         'category', 
 
-        'mapslat','mapslong',
+        'mapslat',
 
         'alamat',
 

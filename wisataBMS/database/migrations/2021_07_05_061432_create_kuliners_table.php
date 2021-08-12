@@ -25,7 +25,6 @@ class CreateKulinersTable extends Migration
             $table->string('btend');
             $table->string('category');
             $table->string('mapslat');
-            $table->string('mapslong');
             $table->string('alamat');
             $table->string('web');
             $table->string('telefon');

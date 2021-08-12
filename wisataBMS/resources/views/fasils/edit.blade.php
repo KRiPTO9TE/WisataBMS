@@ -190,26 +190,15 @@
         <div class="form-group">
 
             
-            <div class="col-xs-6 col-sm-6 ">
-                
                 <div class="form-group">
 
-                    <strong>Latitude</strong>
+                    <strong>Latitude , Longitude</strong>
 
                     <input type="text" name="mapslat" value="{{ $fasil->mapslat }}" class="form-control" placeholder="Latitude">
 
                 </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 ">
-                
-                <div class="form-group">
-
-                    <strong>Longitude</strong>
-
-                    <input type="text" name="mapslong" value="{{ $fasil->mapslong }}" class="form-control" placeholder="Longitude">
-
-                </div>
-            </div>
+            
+            
         </div><br><br>
         
     </div>

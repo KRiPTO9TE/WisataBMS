@@ -41,10 +41,11 @@ class CreateWisatasTable extends Migration
             $table->string('btend');
             $table->string('category');
             $table->string('mapslat');
-            $table->string('mapslong');
             $table->string('alamat');
             $table->string('tika');
             $table->string('tikd');
+            $table->string('tikaw');
+            $table->string('tikdw');
             $table->string('web');
             $table->string('telefon');
             $table->timestamps();

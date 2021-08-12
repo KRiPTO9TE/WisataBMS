@@ -137,10 +137,10 @@
                 <div class="filterDiv {{$data->category}}">
 					<div class="col-lg-4 col-md-4 col-sm-6">
 						<div class="fh5co-blog animate-box1">
-							<a href="#"><img class="img-responsive" src="image/{{$data->image}}" style="width:400px;height:225px;" alt=""></a>
+							<a href="/fasils/{{$data->id}}"><img class="img-responsive" src="image/{{$data->image}}" style="width:400px;height:225px;" alt=""></a>
 							<div class="blog-text">
 								<div class="prod-title">
-									<h3><a href="#">{{$data->name}}</a></h3>
+									<h3><a href="/fasils/{{$data->id}}">{{$data->name}}</a></h3>
 									<span class="posted_by">{{$data->category}}</span>
 									<p><a href="/fasils/{{$data->id}}">Lihat Selengkapnya</a></p>
 								</div>

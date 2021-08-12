@@ -92,12 +92,14 @@ class WisataController extends Controller
             'category' => 'required',
             
             'mapslat' => 'required',
-            'mapslong' => 'required',
 
             'alamat' => 'required',
 
             'tika' => 'required',
             'tikd' => 'required',
+            
+            'tikaw' => 'required',
+            'tikdw' => 'required',
             
             'web' => 'required',
             'telefon' => 'required',
@@ -244,12 +246,14 @@ class WisataController extends Controller
             'category' => 'required',
             
             'mapslat' => 'required',
-            'mapslong' => 'required',
 
             'alamat' => 'required',
 
             'tika' => 'required',
             'tikd' => 'required',
+            
+            'tikaw' => 'required',
+            'tikdw' => 'required',
             
             'web' => 'required',
             'telefon' => 'required',

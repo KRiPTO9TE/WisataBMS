@@ -73,7 +73,7 @@
 					<nav id="fh5co-menu-wrap" role="navigation">
 						<ul class="sf-menu" id="fh5co-primary-menu">
 						@if(Auth::check()==0)
-							<li ><a href="/">Home</a></li>
+							<li  class="active" ><a href="/">Home</a></li>
 							@elseif(Auth::check()==1 && Auth::user()->role == "user")
 							<li class="active"><a href="/">Home</a></li>
 							@endif

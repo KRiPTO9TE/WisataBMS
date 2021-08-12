@@ -95,7 +95,6 @@ class KulinerController extends Controller
             'category' => 'required',
             
             'mapslat' => 'required',
-            'mapslong' => 'required',
 
             'alamat' => 'required',
 
@@ -242,7 +241,6 @@ class KulinerController extends Controller
             'category' => 'required',
             
             'mapslat' => 'required',
-            'mapslong' => 'required',
 
             'alamat' => 'required',
             

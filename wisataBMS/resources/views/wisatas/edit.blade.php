@@ -188,25 +188,14 @@
         <div class="form-group">
 
             
-            <div class="col-xs-6 col-sm-6 ">
                 
                 <div class="form-group">
 
-                    <strong>Latitude</strong>
+                    <strong>Latitude , Longitude</strong>
 
                     <input type="text" name="mapslat" value="{{ $wisata->mapslat }}" class="form-control" placeholder="Latitude">
 
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 ">
                 
-                <div class="form-group">
-
-                    <strong>Longitude</strong>
-
-                    <input type="text" name="mapslong" value="{{ $wisata->mapslong }}" class="form-control" placeholder="Longitude">
-
-                </div>
             </div>
         </div><br><br>
         
@@ -223,7 +212,7 @@
 
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
-    <strong>Harga Tiket Masuk</strong>
+    <strong>Harga Tiket Masuk Weekdays</strong>
         <div class="form-group">
 
             
@@ -244,6 +233,34 @@
                     <strong>Dewasa</strong>
 
                     <input type="text" name="tikd" value="{{ $wisata->tikd }}" class="form-control" placeholder="HTM Dewasa">
+
+                </div>
+            </div>
+        </div><br><br>
+        
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+    <strong>Harga Tiket Masuk Weekend</strong>
+        <div class="form-group">
+
+            
+            <div class="col-xs-6 col-sm-6 ">
+                
+                <div class="form-group">
+
+                    <strong>Anak anak</strong>
+
+                    <input type="text" name="tikaw" value="{{ $wisata->tikaw }}" class="form-control" placeholder="HTM Anak anak">
+
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 ">
+                
+                <div class="form-group">
+
+                    <strong>Dewasa</strong>
+
+                    <input type="text" name="tikdw" value="{{ $wisata->tikdw }}" class="form-control" placeholder="HTM Dewasa">
 
                 </div>
             </div>

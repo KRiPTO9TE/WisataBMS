@@ -32,11 +32,13 @@ class Wisata extends Model
 
         'category', 
 
-        'mapslat','mapslong',
+        'mapslat',
 
         'alamat',
 
         'tika','tikd',
+
+        'tikaw','tikdw',
 
         'web',
         'telefon'

@@ -174,7 +174,7 @@
 			</div>
 		</div>
 
-		<div id="map" style="width: full; height: 560px;"></div>
+		<div id="googleMap" style="width: full; height: 560px;"></div>
 		<!--<div style="width: full; height: 560px;">
 					{!! Mapper::render() !!}
 		</div>-->
@@ -215,7 +215,7 @@
                             <div>Nomer Telefon
                                 <div><a href="tel:{{ $kuliner->telefon }}">{{ $kuliner->telefon }}</a></div>
                             </div>
-                            <div>Web<a href="{{ $kuliner->web }}">{{ $kuliner->web }}</a></div>
+                            <div>Web<a href="http://{{ $kuliner->web }}/">{{ $kuliner->web }}</a></div>
                             
                         </div>
                     </div>
@@ -249,15 +249,28 @@
 	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
-	<script src="http://maps.google.com/maps/api/js?key=AIzaSyA-R3eTNSF8z5mL5KmRT8mJJcENDBW5qMU"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.js"></script>
-	<script>
- 		var map = new GMaps({
-  		el: '#map',
-  		lat: {{ $kuliner->mapslat }},
-    	lng: {{ $kuliner->mapslong }}
-  	});
-	</script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA-R3eTNSF8z5mL5KmRT8mJJcENDBW5qMU"></script>
+<script>
+function initialize() {
+  var propertiPeta = {
+    center:new google.maps.LatLng({{ $kuliner->mapslat }}),
+    zoom:16,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  
+  var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+  
+  // membuat Marker
+  var marker=new google.maps.Marker({
+      position: new google.maps.LatLng({{ $kuliner->mapslat }}),
+      map: peta
+  });
+
+}
+
+// event jendela di-load  
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
 	<script src="{{ asset('js/jquery.min.js') }}"></script>
 	<!-- jQuery Easing -->

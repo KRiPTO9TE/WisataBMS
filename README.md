@@ -8,6 +8,7 @@ Unduh composer terlebih dahulu di https://getcomposer.org/
 Setelah melakukan clone repo ini, masukan command berikut di dalam terminal
 ```bash
 composer install
+composer update
 ```
 Kemudian rename file 
 ```bash
@@ -17,7 +18,7 @@ Menjadi
 ```bash
 .env
 ```
-Lalu konfigurasi file .env dan lakukan migrate serta seeding:
+Lalu lakukan migrate serta seeding:
 ```bash
 php artisan migrate
 php artisan db:seed

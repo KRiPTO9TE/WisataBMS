@@ -1558,7 +1558,15 @@ div.cs-select span {
 .fh5co-blog .blog-text span.posted_by {
   font-style: italic;
   color: rgba(0, 0, 0, 0.3);
-  font-size: 18px;
+  font-size: 15px;
+  font-weight: normal;
+}
+.fh5co-blog .blog-text div.posted_by1 {
+  font-size: 14px;
+  white-space: nowrap; 
+  width: 290px; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
 }
 .fh5co-blog .blog-text span.comment {
   float: right;
@@ -1571,9 +1579,9 @@ div.cs-select span {
   padding-left: 7px;
 }
 .fh5co-blog .blog-text h3 {
-  font-size: 20px;
-  margin-bottom: 20px;
-  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
   line-height: 1.5;
 }
 .fh5co-blog .blog-text h3 a {

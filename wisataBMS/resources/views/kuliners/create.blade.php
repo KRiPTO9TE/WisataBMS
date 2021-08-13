@@ -60,16 +60,16 @@
 
  <div class="row">
 
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-3 col-sm-3 col-md-3">
 
         <div class="form-group">
 
             <strong>Name:</strong>
 
-            <input type="text" name="name" class="form-control" placeholder="Name">
+            <input type="text" maxlength="34" name="name" class="form-control" placeholder="Name">
 
         </div>
-
+        <p style="color:red">Pastikan kurang dari 34 karakter.</p>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -127,11 +127,15 @@
 
         </div>
 
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+    <p style="color:red">Pastikan gambar berukuran lebih kecil dari 2048x2048 dan size tidak boleh lebih dari 2MB.</p>
+
     </div><br><br>
     
     <div class="col-xs-12 col-sm-12 col-md-12">
-    <strong>Jam Operasional</strong><br>
-    <br>
+    <strong>Jam Operasional</strong>
         
         <div class="form-group">
 
@@ -188,7 +192,7 @@
 
             </div>
             
-        </div><br><br>
+        </div>
         
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -212,7 +216,7 @@
             <input type="text" name="web" class="form-control" placeholder="alamat Web">
 
         </div>
-
+        <p style="color:red">Jika tidak ada, masukan saja alamat web Klinthung.</p>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
 

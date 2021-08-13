@@ -140,6 +140,7 @@
 								<div class="prod-title">
 									<h3><a href="/kuliners/{{$data->id}}">{{$data->name}}</a></h3>
 									<span class="posted_by">{{$data->category}}</span>
+									<div class="posted_by1">{{$data->detail}}</div>
 									<p><a href="/kuliners/{{$data->id}}">Lihat Selengkapnya</a></p>
 								</div>
 							</div> 

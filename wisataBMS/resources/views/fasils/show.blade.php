@@ -83,7 +83,7 @@
                             <li class=""><a href="/kuliners">Kuliner</a></li>
                             <li class="active"><a href="/fasils">Fasilitas</a></li>
 							@elseif(Auth::check()==1 && Auth::user()->role == "user")
-							<li ><a href="/user">Home</a></li>
+							<li ><a href="/">Home</a></li>
 							<li class=""><a href="/wisata">Wisata</a></li>
                             <li class=""><a href="/kuliner">Kuliner</a></li>
                             <li class="active"><a href="/fasil">Fasilitas</a></li>
@@ -215,7 +215,7 @@
                             <div>Nomer Telefon
                                 <div><a href="tel:{{ $fasil->telefon }}">{{ $fasil->telefon }}</a></div>
                             </div>
-                            <div>Web<a href="{{ $fasil->web }}">{{ $fasil->web }}</a></div>
+                            <div>Web<a href="http://{{ $fasil->web }}/">{{ $fasil->web }}</a></div>
                             
                         </div>
                     </div>

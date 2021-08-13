@@ -100,7 +100,7 @@
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 						<h3>Admin Page</h3>
-						<p>Untuk menambah wisata, Kuliner dan Fasilitas klik opsi dibawah ini. masih belum familiar dengan fiturnya? baca panduanya <a href="uas.pdf">disini</a> </p>
+						<p>Untuk menambah, menghapus dan mengedit wisata, kuliner dan fasilitas klik dan pilih salah satu opsi dibawah ini.</p>
 					</div>
 				</div>
 				<div class="row">

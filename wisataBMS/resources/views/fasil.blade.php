@@ -142,6 +142,7 @@
 								<div class="prod-title">
 									<h3><a href="/fasils/{{$data->id}}">{{$data->name}}</a></h3>
 									<span class="posted_by">{{$data->category}}</span>
+									<div class="posted_by1">{{$data->detail}}</div>
 									<p><a href="/fasils/{{$data->id}}">Lihat Selengkapnya</a></p>
 								</div>
 							</div> 

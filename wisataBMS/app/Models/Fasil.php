@@ -18,21 +18,36 @@ class Fasil extends Model
     protected $fillable = [
 
         'name', 
+        
+        'image',
 
         'detail', 
-
-        'image','image1','image2','image3',
-
-        'btdays','btend', 
 
         'category', 
 
         'mapslat',
+        'mapslong',
 
         'alamat',
+        
+        'bukday',
+        'bukend',
+        'ttpday',
+        'ttpend',
+        
+        'fasi',
 
         'web',
         'telefon'
 
     ];
+    public function setFasiAttribute($value)
+    {
+        $this->attributes['fasi'] = json_encode($value);
+    }
+
+    public function getFasiAttribute($value)
+    {
+        return $this->attributes['fasi'] = json_decode($value);
+    }
 }

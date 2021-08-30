@@ -7,7 +7,8 @@ namespace App\Http\Controllers;
   
 
 use App\Models\Kuliner;
-
+use App\Models\Kmenu;
+use App\Models\Kgambar;
 use Illuminate\Http\Request;
 use Auth;
   
@@ -26,20 +27,42 @@ class KulinerController extends Controller
 
      */
 
-    public function index()
+    public function index(Request $request)
 
     {
 
-        $kuliners = Kuliner::latest()->paginate(999);
-
-    
-
-        return view('kuliners.index',compact('kuliners'))
-
-            ->with('i', (request()->input('page', 1) - 1) * 999);
+        $pagination  = 10;
+            $kuliners   = Kuliner::when($request->keyword, function ($query) use ($request) {
+                $query
+                ->where('name', 'ilike', "%{$request->keyword}%");
+            })->orderBy('created_at', 'desc')->paginate($pagination);
+        
+            $kuliners->appends($request->only('keyword'));
+        
+            return view('kuliners.index', [
+                'name'    => 'Kuliners',
+                'kuliners' => $kuliners,
+            ])->with('i', ($request->input('page', 1) - 1) * $pagination);
 
     }
+    public function userindex(Request $request)
 
+    {
+
+        $pagination  = 9999;
+            $kuliners   = Kuliner::when($request->keyword, function ($query) use ($request) {
+                $query
+                ->where('name', 'ilike', "%{$request->keyword}%");
+            })->orderBy('created_at', 'desc')->paginate($pagination);
+        
+            $kuliners->appends($request->only('keyword'));
+        
+            return view('kuliner', [
+                'name'    => 'Kuliners',
+                'kuliners' => $kuliners,
+            ])->with('i', ($request->input('page', 1) - 1) * $pagination);
+
+    }
    
 
     /**
@@ -81,26 +104,29 @@ class KulinerController extends Controller
         $request->validate([
 
             'name' => 'required',
+            
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
             'detail' => 'required',
-
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image1' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image2' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'image3' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            
-            'btdays' => 'required',
-            'btend' => 'required',
 
             'category' => 'required',
             
             'mapslat' => 'required',
+            'mapslong' => 'required',
 
             'alamat' => 'required',
 
+            'bukday' => 'required',
+            'bukend' => 'required',
+            'ttpday' => 'required',
+            'ttpend' => 'required',
+
+            'fasi' => 'required',
+            
             'web' => 'required',
             'telefon' => 'required',
 
+        
         ]);
 
   
@@ -120,45 +146,9 @@ class KulinerController extends Controller
             $input['image'] = "$profileImage";
 
         }
-        if ($image1 = $request->file('image1')) {
-
-            $destinationPath1 = 'image/';
-
-            $profileImage1 = date('YmdHis77') . "." . $image1->getClientOriginalExtension();
-
-            $image1->move($destinationPath1, $profileImage1);
-
-            $input['image1'] = "$profileImage1";
-
-        }
-        if ($image2 = $request->file('image2')) {
-
-            $destinationPath2 = 'image/';
-
-            $profileImage2 = date('YmdHis66') . "." . $image2->getClientOriginalExtension();
-
-            $image2->move($destinationPath2, $profileImage2);
-
-            $input['image2'] = "$profileImage2";
-
-        }
-        if ($image3 = $request->file('image3')) {
-
-            $destinationPath3 = 'image/';
-
-            $profileImage3 = date('YmdHis3') . "." . $image3->getClientOriginalExtension();
-
-            $image3->move($destinationPath3, $profileImage3);
-
-            $input['image3'] = "$profileImage3";
-
-        }
-    
-
+        
+        
         Kuliner::create($input);
-
-     
-
         return redirect()->route('kuliners.index')
 
                         ->with('success','Kuliner created successfully.');
@@ -183,7 +173,9 @@ class KulinerController extends Controller
 
     {
 
-        return view('kuliners.show',compact('kuliner'));
+        $kmenu =Kmenu::all();
+        $kgambar =kgambar::all();
+        return view('kuliners.show',['kmenus'=>$kmenu,'kgambars'=>$kgambar],compact('kuliner'));
 
     }
 
@@ -208,7 +200,30 @@ class KulinerController extends Controller
         return view('kuliners.edit',compact('kuliner'));
 
     }
+    public function tambahmenu(Kuliner $id)
 
+    {
+
+        return view('kmenus.create',compact('id'));
+        
+    }
+    public function showmenu(Kuliner $kuliner)
+
+    {
+        $kmenu =Kmenu::all();
+        return view('kuliners.show',['kmenus'=>$kmenu],compact('kuliner'));
+        
+    }
+
+    public function lihatmenu(Kuliner $kuliner)
+
+    {
+
+        return view('kmenus.index', [
+            'kuliner' => $kuliner
+        ]);
+
+    }
     
 
     /**
@@ -232,17 +247,23 @@ class KulinerController extends Controller
         $request->validate([
 
             'name' => 'required',
+            
 
             'detail' => 'required',
-            
-            'btdays' => 'required',
-            'btend' => 'required',
 
             'category' => 'required',
             
             'mapslat' => 'required',
+            'mapslong' => 'required',
 
             'alamat' => 'required',
+
+            'bukday' => 'required',
+            'bukend' => 'required',
+            'ttpday' => 'required',
+            'ttpend' => 'required',
+
+            'fasi' => 'required',
             
             'web' => 'required',
             'telefon' => 'required',
@@ -269,54 +290,7 @@ class KulinerController extends Controller
             unset($input['image']);
 
         }
-        if ($image1 = $request->file('image1')) {
-
-            $destinationPath1 = 'image/';
-
-            $profileImage1 = date('YmdHis77') . "." . $image1->getClientOriginalExtension();
-
-            $image1->move($destinationPath1, $profileImage1);
-
-            $input['image1'] = "$profileImage1";
-
-        }else{
-
-            unset($input['image1']);
-
-        }
-        if ($image2 = $request->file('image2')) {
-
-            $destinationPath2 = 'image/';
-
-            $profileImage2 = date('YmdHis66') . "." . $image2->getClientOriginalExtension();
-
-            $image2->move($destinationPath2, $profileImage2);
-
-            $input['image2'] = "$profileImage2";
-
-        }else{
-
-            unset($input['image2']);
-
-        }
-        if ($image3 = $request->file('image3')) {
-
-            $destinationPath3 = 'image/';
-
-            $profileImage3 = date('YmdHis3') . "." . $image3->getClientOriginalExtension();
-
-            $image3->move($destinationPath3, $profileImage3);
-
-            $input['image3'] = "$profileImage3";
-
-        }else{
-
-            unset($input['image3']);
-
-        }
-
-          
-
+        
         $kuliner->update($input);
 
     

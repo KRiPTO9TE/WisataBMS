@@ -37,27 +37,10 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
 	
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-	<!-- Superfish -->
-	<link rel="stylesheet" href="{{ asset('css/superfish.css') }}">
-	<!-- Magnific Popup -->
-	<link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}"> 
-	<!-- Date Picker -->
-	<link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
-	<!-- CS Select -->
-	<link rel="stylesheet" href="{{ asset('css/cs-select.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/cs-skin-border.css') }}">
-	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="{{ asset('css/sty.css') }}">
-
-
-	<!-- Modernizr JS -->
-	<script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -66,63 +49,30 @@
 	</head>
 	<body>
 
-	
-		<div id="fh5co-wrapper">
-		<div id="fh5co-page">
-
-		<header id="fh5co-header-section" class="sticky-banner">
-			<div class="container">
-				<div class="nav-header">
-					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle dark"><i></i></a>
-					<h1 id="fh5co-logo"><a href="/admin"><img src="{{ asset('images/logo.png') }}" width="35" height="35" alt="logo"> KLINTHUNG</a></h1>
-					<!-- START #fh5co-menu-wrap -->
-					<nav id="fh5co-menu-wrap" role="navigation">
-						<ul class="sf-menu" id="fh5co-primary-menu">
-							<li class=""><a href="/admin">Home</a></li>
-							<li class="active"><a href="/wisatas">Wisata</a></li>
-                            <li class=""><a href="/kuliners">Kuliner</a></li>
-                            <li class=""><a href="/fasils">Fasilitas</a></li>
-                            <li>
-								<a href="#" class="fh5co-sub-ddown"><img src="{{ asset('images/user.png') }}" width="25" height="25" alt="user">{{ auth()->user()->name }}</a>
-								<ul class="fh5co-sub-menu">
-									<li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                        </form>
-                                    </li>
-								</ul>
-							</li>
-						</ul>
-					</nav>
-				</div>
-			</div>
-		</header>
-<br><br>
 <div class="container">
 
+<br><br>
+    <div class="row">
+        
+        <div class="col">
+            <div class="float-left">
 
-        <div class="row">
+            <a class="btn btn-primary" href="{{ route('wisatas.index') }}"> Back</a>
 
-<div class="col-lg-12 margin-tb">
+            
 
-    <div class="pull-left">
+            
+            </div>
+        </div>
+        <div class="col">
+        <div class="float-right">
 
         <h2>Add New Wisata</h2>
+            
 
+        </div>
     </div>
 
-    <div class="pull-right">
-
-        <a class="btn btn-primary" href="{{ route('wisatas.index') }}"> Back</a>
-
-    </div>
-
-</div>
 
 </div>
 
@@ -147,29 +97,41 @@
 </div>
 
 @endif
-
- 
+</div>
 
 <form action="{{ route('wisatas.store') }}" method="POST" enctype="multipart/form-data">
 
 @csrf
 
 
-
+<div class="container">
  <div class="row">
 
-    <div class="col-xs-3 col-sm-3 col-md-3">
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
         <div class="form-group">
 
             <strong>Name:</strong>
 
-            <input type="text" maxlength="34" name="name" class="form-control" placeholder="Name">
+            <input type="text" name="name" class="form-control" placeholder="Name">
 
         </div>
-        <p style="color:red">Pastikan kurang dari 34 karakter.</p>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
 
+        <div class="form-group">
+
+            <strong>Image Cover:</strong>
+
+            <input type="file" name="image" class="form-control" placeholder="Name">
+
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+
+<p style="color:red">Pastikan gambar berukuran lebih kecil dari 2048x2048 dan size tidak boleh lebih dari 2MB.</p>
+
+</div><br><br>
     <div class="col-xs-12 col-sm-12 col-md-12">
 
         <div class="form-group">
@@ -182,90 +144,15 @@
 
     </div>
 
-    <div class="col-xs-3 col-sm-3 col-md-3">
-
-        <div class="form-group">
-
-            <strong>Image Cover:</strong>
-
-            <input type="file" name="image" class="form-control" placeholder="image">
-
-        </div>
-
-    </div>
-    <div class="col-xs-3 col-sm-3 col-md-3">
-
-        <div class="form-group">
-
-            <strong>Image:</strong>
-
-            <input type="file" name="image1" class="form-control" placeholder="image">
-
-        </div>
-
-    </div>
-    <div class="col-xs-3 col-sm-3 col-md-3">
-
-        <div class="form-group">
-
-            <strong>Image:</strong>
-
-            <input type="file" name="image2" class="form-control" placeholder="image">
-
-        </div>
-
-    </div>
-    <div class="col-xs-3 col-sm-3 col-md-3">
-
-        <div class="form-group">
-
-            <strong>Image:</strong>
-
-            <input type="file" name="image3" class="form-control" placeholder="image">
-
-        </div>
-
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-
-    <p style="color:red">Pastikan gambar berukuran lebih kecil dari 2048x2048 dan size tidak boleh lebih dari 2MB.</p>
-
-    </div><br><br>
+    
     
     <div class="col-xs-12 col-sm-12 col-md-12">
-    <strong>Jam Operasional</strong>
-        
-        <div class="form-group">
 
+        <div class="form-group">
             
-            <div class="col-xs-6 col-sm-6 ">
-                
-                <div class="form-group">
-                    <strong>Weekdays</strong>
-                    <strong>Buka-Tutup</strong>
-
-                    <input type="text" name="btdays" class="form-control" placeholder="jj.mm-jj.mm">
-
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 ">
-                
-                <div class="form-group">
-                <strong>Weekend</strong>
-                    <strong>Buka-Tutup</strong>
-
-                    <input type="text" name="btend" class="form-control" placeholder="jj.mm-jj.mm">
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
-
-        <div class="form-group">
-            <br>
+            
             <strong>Category:</strong>
-            <select id="category" name="category">
+            <select id="category" class="form-control" name="category">
                 <option value="">Pilih salah satu</option>
                 <option value="Air">Air</option>
                 <option value="Taman">Taman</option>
@@ -273,23 +160,67 @@
                 <option value="Hiburan">Hiburan</option>
             </select>
             <!--<input type="text" name="category" class="form-control" placeholder="Category">
--->         <br><br>
+-->         <br>
         </div>
 
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="col-xs-6 col-sm-6 ">
+    <strong>Jam Operasional Weekdays:</strong>
+        <div class="row">
+        
+            <div class="col">
+                <div class="md-form md-outline">
+                    <strong>Buka:</strong>
+                    <input type="time" name="bukday" id="default-picker" class="form-control" placeholder="Select time">
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="md-form md-outline">
+                    <strong>Tutup:</strong>
+                    <input type="time" name="ttpday" id="default-picker" class="form-control" placeholder="Select time">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+    <strong>Jam Operasional Weekends:</strong>
+        <div class="row">
+        
+            <div class="col">
+                <div class="md-form md-outline">
+                    <strong>Buka:</strong>
+                    <input type="time" name="bukend" id="default-picker" class="form-control" placeholder="Select time">
+                    
+                </div>
+            </div>
+            <div class="col">
+                <div class="md-form md-outline">
+                    <strong>Tutup:</strong>
+                    <input type="time" name="ttpend" id="default-picker" class="form-control" placeholder="Select time">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-12"><br><br>
+    <div class="row">
+
+        <div class="col">
             <div class="form-group">
                 <div id="map-canvas" style="width: 512px; height: 256px;"></div>
             </div>
         </div>
-        <div class="col-xs-6 col-sm-6 ">
+        <div class="col">
             <div class="form-group">
                 <strong>Alamat:</strong>
                 <input type="text" id="map-search" name="alamat" class="form-control" placeholder="Cari alamatnya disini">
                 <br> <br>
                 <label for="">Lat: <input type="text" name="mapslat" class="latitude"></label>
                 <label for="">Long: <input type="text" name="mapslong" class="longitude"></label>
+            </div>
             </div>
         </div>
     </div>
@@ -298,70 +229,90 @@
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-R3eTNSF8z5mL5KmRT8mJJcENDBW5qMU&libraries=places&callback=initialize"></script>
     
     <div class="col-xs-12 col-sm-12 col-md-12">
-        <br>
-    <strong>Harga Tiket Masuk Weekdays</strong>
-        <div class="form-group">
-
-            
-            <div class="col-xs-6 col-sm-6 ">
-                
-                <div class="form-group">
-
-                    <strong>Anak anak</strong>
-
-                    <input type="text" name="tika" class="form-control" placeholder="HTM Anak anak">
-
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 ">
-                
-                <div class="form-group">
-
-                    <strong>Dewasa</strong>
-
-                    <input type="text" name="tikd" class="form-control" placeholder="HTM Dewasa">
-
-                </div>
-            </div>
-        </div><br><br>
+    <strong>Harga Tiket Weekdays:</strong>
+        <div class="row">
         
+            <div class="col">
+                <strong>Anak Anak:</strong>
+                <div class="input-group mb-3">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                    </div>
+                    <input type="number" name="tktaday" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    
+                </div>
+            </div>
+            <div class="col">
+            <strong>Dewasa:</strong>
+                <div class="input-group mb-3">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                    </div>
+                    <input type="number" name="tktdday" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
-    <strong>Harga Tiket Masuk Weekend</strong>
-        <div class="form-group">
-
-            
-            <div class="col-xs-6 col-sm-6 ">
-                
-                <div class="form-group">
-
-                    <strong>Anak anak</strong>
-
-                    <input type="text" name="tikaw" class="form-control" placeholder="HTM Anak anak">
-
-                </div>
-            </div>
-            <div class="col-xs-6 col-sm-6 ">
-                
-                <div class="form-group">
-
-                    <strong>Dewasa</strong>
-
-                    <input type="text" name="tikdw" class="form-control" placeholder="HTM Dewasa">
-
-                </div>
-            </div>
-        </div><br><br>
+    <strong>Harga Tiket Weekends:</strong>
+        <div class="row">
         
+            <div class="col">
+            <strong>Anak Anak:</strong>
+                <div class="input-group mb-3">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                    </div>
+                    <input type="number" name="tktaend" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    
+                </div>
+            </div>
+            <div class="col">
+            <strong>Dewasa:</strong>
+                <div class="input-group mb-3">
+                    
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rp.</span>
+                    </div>
+                    <input type="number" name="tktdend" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    
+                </div>
+            </div>
+        </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
-
+    <strong>Fasilitas</strong>
         <div class="form-group">
-
-            <strong>Web:</strong>
-
-            <input type="text" name="web" class="form-control" placeholder="alamat Web">
-
+            <div class="row">
+                   <div class="col-4">
+                       <strong>Fasilitas yang tersedia:</strong>
+                   </div>
+                   <div class="col-8">
+                       <label class="checkbox-inline"><input type="checkbox" name="fasi[]" value="Mushola">Mushola</label>
+                       <label class="checkbox-inline"><input type="checkbox" name="fasi[]" value="Toilet dan WC">Toilet dan WC</label>
+                       <label class="checkbox-inline"><input type="checkbox" name="fasi[]" value="Area Parkir">Area Parkir</label>
+                       <label class="checkbox-inline"><input type="checkbox" name="fasi[]" value="Area Makan">Tempat Makan</label>
+                       
+                   </div>
+            </div>
+        </div>
+    </div>     
+    
+    <div class="col-xs-12 col-sm-12 col-md-12">
+    
+    <strong>Web:</strong><br>
+    </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+            <span class="input-group-text"   id="basic-addon3">https://</span>
+        </div>
+            <input type="text" class="form-control" name="web" id="basic-url" aria-describedby="basic-addon3">
         </div>
         <p style="color:red">Jika tidak ada, masukan saja alamat web Klinthung.</p>
     </div>
@@ -377,12 +328,35 @@
 
 </div>
 
-    <div class="col-xs-12 col-sm-12 col-md-12 text-right">
-
-            <button type="submit" class="btn btn-primary">Submit</button>
-<br><br><br><br><br><br>
+    <div class="col-xs-12 col-sm-12 col-md-12 text-xs-right">
+        <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#exampleModal">Submit</button>  
+        <br><br><br><br><br><br>
     </div>
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <!-- header-->
+      <div class="modal-header">
+      <h5 class="modal-title">Submit ?</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        
+      </div>
+      <!--body-->
+      <div class="modal-body">
+        Apakah data yang sudah dimasukan sudah benar?
+      </div>
+      <!--footer-->
+      <div class="modal-footer">
+        <button class="btn btn-danger" data-dismiss="modal">Tutup</button>
+        <button type="submit" class="btn btn-info" class="">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 </div>
@@ -410,33 +384,11 @@
 
 	<!-- jQuery -->
 	
-
-	<script src="{{ asset('js/jquery.min.js') }}"></script>
-	<!-- jQuery Easing -->
-	<script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
-	<!-- Bootstrap -->
-	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
-	<!-- Waypoints -->
-	<script src="{{ asset('js/jquery.waypoints.min.js') }}"></script>
-	<script src="{{ asset('js/sticky.js') }}"></script>
-
-	<!-- Stellar -->
-	<script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
-	<!-- Superfish -->
-	<script src="{{ asset('js/hoverIntent.js') }}"></script>
-	<script src="{{ asset('js/superfish.js') }}"></script>
-	<!-- Magnific Popup -->
-	<script src="{{ asset('js/jquery.magnific-popup.min.js') }}"></script>
-	<script src="{{ asset('js/magnific-popup-options.js') }}"></script>
-	<!-- Date Picker -->
-	<script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
-	<!-- CS Select -->
-	<script src="{{ asset('js/classie.js') }}"></script>
-	<script src="{{ asset('js/selectFx.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	
-	<!-- Main JS -->
-	<script src="{{ asset('js/main.js') }}"></script>
-
+    
 	</body>
 </html>
 

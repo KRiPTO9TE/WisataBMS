@@ -61,9 +61,34 @@
 
 	</head>
 	<body>
+	@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+	@endif
+	
+	@if ($errors->any())
+
+	<div class="alert alert-danger">
+
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+
+    <ul>
+
+        @foreach ($errors->all() as $error)
+
+            <li>{{ $error }}</li>
+
+        @endforeach
+
+    </ul>
+
+</div>
+
+@endif
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-
+		
 		<header id="fh5co-header-section" class="sticky-banner">
 			<div class="container">
 				<div class="nav-header">
@@ -113,118 +138,374 @@
 				</div>
 			</div>
 		</header>
+		<div class="fh5co-hero">
+			<div class="fh5co-overlay"></div>
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(/image/{{ $kuliner->image }});">
+				<div class="desc">
+					<div class="container">
+						<div class="row">   
+							<div class="desc2 animate-box">
+								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
+									<h1>Kuliner {{ $kuliner->category }}</h1>
+									<h2>{{ $kuliner->name }}</h2>
+									<h3>Klinthung Banyumas</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
 
 		<div id="fh5co-tours" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 						<h3>Kuliner {{ $kuliner->category }}</h3>
-						<p>Pilihan Jelajah Kuliner di Kabupaten Banyumas dari cafe hingga kuliner tradisional yang siap untuk menemani liburanmu!</p>
+						<p>Kumpulan kuliner yang tersedia di Banyumas dari modern hingga tradisional!</p>
 					</div>
 				</div>
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators ">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-	<li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner animate-box">
-    <div class="item active ">
-      <img src="/image/{{ $kuliner->image }}"width="1280" height="720" alt="Los Angeles">
-    </div>
-
-    <div class="item ">
-      <img src="/image/{{ $kuliner->image1 }}"width="1280" height="720" alt="Los Angeles">
-    </div>
-
-    <div class="item ">
-      <img src="/image/{{ $kuliner->image2 }}"width="1280" height="720" alt="Los Angeles">
-    </div>
-	<div class="item ">
-      <img src="/image/{{ $kuliner->image3 }}"width="1280" height="720" alt="Los Angeles">
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control animate-box" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control animate-box" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div><br><br><br>
 				<div class="row">
 					<div class="col-md-12 animate-box">
 						<h2 class="heading-title">{{ $kuliner->name }}</h2>
 					</div>
-					<div class="col-md-12 animate-box">
+					<div class="col-md-6 animate-box">
 						<p>{{ $kuliner->detail }}</p><br><br>
 						
+					</div>
+					<div class="col-md-6 animate-box">
+
+	
+
+
+					
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						
+
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+						<div class="item active">
+							<img src="/image/{{ $kuliner->image }}" alt="(/image/{{ $kuliner->image }})" style="width:100%;">
+						</div>
+						@foreach ($kgambars as $kgambar)
+						@if (  "{{ $kgambar->kuliner_id }}"  == "{{ $kuliner->id }}" )     						
+						<div class="item">
+							<img src="{{asset('image/'. $kgambar->image)}}" alt="{{ $kgambar->image }}" style="width:100%;">
+							
+
+						</div>
+						@endif
+						@endforeach
+						</div>
+
+						<!-- Left and right controls -->
+						<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+						<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#myCarousel" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+						<span class="sr-only">Next</span>
+						</a>
+					</div>
+					@if(Auth::check()==1 && Auth::user()->role == "admin")
+					<br>
+					<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal1">+ gambar</button>
+					@endif
+					</div>
+
+				
+				<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Tambah Gambar</h4>
+							</div>
+							<div class="modal-body">
+								
+
+								
+
+								<form action="{{ route('kgambars.store') }}" method="POST" enctype="multipart/form-data">
+
+								@csrf
+										
+
+								<input type="hidden" id="kuliner_id" name="kuliner_id" value="{{ $kuliner->id}}">
+								
+
+								
+								
+									<input type="file" name="image"  class="form-control" placeholder="image">
+
+
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-success">Tambah</button>
+								</div>
+					</form>
+							</div>
+						</div>
+					</div>
+
+			</div>
+</div><br><br><br>
+@if(Auth::check()==1 && Auth::user()->role == "admin")
+<table class="table table-bordered">
+
+<tr>
+
+	<th>Gambar</th>
+
+	<th>Action</th>
+
+</tr>
+
+@foreach ($kgambars as $kgambar)
+@if("{{ $kgambar->kuliner_id}}"  == "{{ $kuliner->id }}")
+<tr>
+
+
+	
+
+	<td><img src="/image/{{ $kgambar->image }}" width="100px" alt=""></td>
+	<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal2">Hapus</button>
+
+
+	<!-- Modal -->
+	<div id="myModal2" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Hapus</h4>
+				  </div>
+			  <div class="modal-body">
+				<p>Anda yakin untuk menghapus?</p>
+			  </div>
+			  <div class="modal-footer">
+				
+			  <form action="{{ route('kgambars.destroy',$kgambar->id) }}" method="POST">
+												
+												@csrf
+												@method('DELETE')
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-danger">Delete</button>
+											</form>
+			  </div>
+		</div>
+
+		  </div>
+	</div>
+
+		
+					
+	</td>
+
+</tr>
+
+@endif
+
+@endforeach
+
+</table>
+@endif
+			
+
+<div id="fh5co-tours" class="">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+						<h3>Menu {{ $kuliner->name }}</h3>
+					</div>
+					@if(Auth::check()==1 && Auth::user()->role == "admin")
+					<div class="col-md-10 col-md-offset-10 pull-left animate-box">
+						<a class="btn btn-success" href="/kuliners/menu/{{$kuliner->id}}">Tambah Menu</a> 
+						<br><br><br>
+					</div>
+					
+					@endif
 				</div>
+				<div class="row">
+					
+					@foreach($kmenus as $kmenu )
+					@if( "{{ $kmenu->kuliner_id }}"  == "{{ $kuliner->id }}" )
+					<div class="col-md-4 col-sm-6 fh5co-tours animate-box" data-animate-effect="fadeIn">
+						<div href="#"><img src="/image/{{ $kmenu->image }}" style="width:400px;height:225px;" auto; alt="{{ $kmenu->judul }}" class="img-responsive">
+							<div class="desc">
+								<span></span>
+								<h3>{{ $kmenu->judul }}</h3>
+								<span class="price">Rp. {{ $kmenu->detail }}</span>
+								@if(Auth::check()==1 && Auth::user()->role == "admin")
+								<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Hapus</button>
+								
+								<a class="btn btn-primary" href="{{ route('kmenus.edit',$kmenu->id) }}">Edit</a>
+								@endif
+							</div>
+						</div>
+					</div>
+					<!-- Modal -->
+					<div id="myModal" class="modal fade" role="dialog">
+									<div class="modal-dialog">
+
+										<!-- Modal content-->
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="modal-title">Hapus</h4>
+											</div>
+										<div class="modal-body">
+											<p>Anda yakin untuk menghapus?</p>
+										</div>
+										<div class="modal-footer">
+											
+											<form action="{{ route('kmenus.destroy',$kmenu->id) }}" method="POST">
+												
+												@csrf
+												@method('DELETE')
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-danger">Delete</button>
+											</form>
+										</div>
+									</div>
+								</div>
+								</div>
+					@endif
+					@endforeach
+				</div>
+			</div>
+		</div>
+		<br>
+
+
+
+
+
+	<div id="fh5co-car" class="fh5co-section-grayy">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+					<h3>Fasilitas</h3>
+					
+				</div>
+			</div>
+			<div class="row row-bottom-padded-md">
+			@foreach($kuliner->fasi as $value)
+				<div class="col-xs-3 col-sm-3 col-md-3 animate-box">
+				
+					<div class="car">
+						<div class="one-4">
+							<h3>{{$value}}</h3>
+						</div>
+					</div>
+				</div>
+			@endforeach
+				
+			</div>
+		</div>
+	</div>
+	
+	</div>
 				
 				
 				</div>
 				
 			</div>
 		</div>
+		</div>
+</div>
 
-		<div id="googleMap" style="width: full; height: 560px;"></div>
+	<br><br><br>
+		<div class="animate-box" id="googleMap" style="width: full; height: 560px;"></div>
 		<!--<div style="width: full; height: 560px;">
 					{!! Mapper::render() !!}
 		</div>-->
-		<section class="common-form-section contact-form-wrapper" id="footer-contact">
-        <div class="container">
-            <!--end section title -->
-            <div class="row">
-                <div class="flex-container clearfix">
-                    <div class="col-md-8 col-sm-12">
-                        <div class="customise-form contact-form clearfix">
-                            
-                                
-								<div class="row">
-                                    <div class="col-sm-12">
-                                        <h3>Jam Operasional</h3>
-                                    </div>
-									<div class="col-xs-6 ">
-										<h4>Weekdays</h4>
-										<p>{{ $kuliner->btdays }}</p>
-                                    </div>
-									<div class="col-xs-6">
-										<h4>Weekend</h4>
-										<p>{{ $kuliner->btend }}</p><br>
-                                    </div>
-                                </div>
-								<div class="row">
-                                    <div class="col-sm-12">
-                                        <h3>Kunjungi kami di</h3>
-										<p>{{ $kuliner->alamat }} </p>
-                                    </div>
-                                </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="contact-information">
-                            <h3>Kontak</h3>
-                            <div>Nomer Telefon
-                                <div><a href="tel:{{ $kuliner->telefon }}">{{ $kuliner->telefon }}</a></div>
-                            </div>
-                            <div>Web<a href="http://{{ $kuliner->web }}/">{{ $kuliner->web }}</a></div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+		<div id="fh5co-contact" class="fh5co-section-gray">
+			<div class="container">
+				
+				<form action="#">
+					<div class="row animate-box">
+						<div class="col-md-6">
+							<h3 class="section-title">Alamat</h3>
+							<p>Kunjungi kami di alamat berikut</p>
+							<ul class="contact-info">
+								<li><i class="icon-location-pin"></i>{{ $kuliner->alamat }}</li>
+								<li><i class="icon-phone2"></i>{{ $kuliner->telefon }}</li>
+								<li><i class="icon-globe2"></i><a href="http://{{ $kuliner->web }}">{{ $kuliner->web }}</a></li>
+							</ul>
+						</div>
+						<div class="col-md-6">
+						<h3 class="section-title">Jam Operasional</h3>
+								
+									<table>
+										<tr class="monday fvl-d">
+											<td><span>Weekdays</span></td>
+											<td>{{ $kuliner->bukday }}</td>
+											<td>-</td>
+											<td>{{ $kuliner->ttpday }}</td>
+										</tr>
+										<tr class="tuesday fvl-d">
+											<td><span>Weekends</span></td>
+											<td>{{ $kuliner->bukend }}</td><td>-</td>
+											<td>{{ $kuliner->ttpend }}</td>
+										</tr>
+										
+									</table>
+								
+								<script>
+								const time = () => {
+
+									const activerow = document.querySelector('#activerow');
+
+									const monday = document.querySelector('.monday');
+									const tuesday = document.querySelector('.monday');
+									const wednesday = document.querySelector('.monday');
+									const thursday = document.querySelector('.monday');
+									const friday = document.querySelector('.monday');
+									const saturday = document.querySelector('.tuesday');
+									const sunday = document.querySelector('.tuesday');
 
 
+									switch (new Date().getDay()) {
+
+										case 1:
+											monday.setAttribute("id", "activerow");
+											break;
+										case 2:
+											tuesday.setAttribute("id", "activerow");
+											break;
+										case 3:
+											wednesday.setAttribute("id", "activerow");
+											break;
+										case 4:
+											thursday.setAttribute("id", "activerow");
+											break;
+										case 5:
+											friday.setAttribute("id", "activerow");
+											break;
+										case 6:
+											saturday.setAttribute("id", "activerow");
+											break;
+										case 0:
+											sunday.setAttribute("id", "activerow");
+											break;
+									}
+
+								}
+								time();
+								</script>
+
+							
+						</div>
+						
+					</div>
+				</form>
+			</div>
+		</div>
 
 
 
@@ -253,7 +534,7 @@
 <script>
 function initialize() {
   var propertiPeta = {
-    center:new google.maps.LatLng({{ $kuliner->mapslat }}),
+    center:new google.maps.LatLng({{ $kuliner->mapslat }},{{ $kuliner->mapslong }}),
     zoom:16,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
@@ -262,7 +543,7 @@ function initialize() {
   
   // membuat Marker
   var marker=new google.maps.Marker({
-      position: new google.maps.LatLng({{ $kuliner->mapslat }}),
+      position: new google.maps.LatLng({{ $kuliner->mapslat }},{{ $kuliner->mapslong }}),
       map: peta
   });
 

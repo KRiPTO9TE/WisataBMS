@@ -125,15 +125,30 @@
   						<button class="btn" onclick="filterSelection('Keluarga')"> Keluarga</button>
   						<button class="btn" onclick="filterSelection('Taman')"> Taman</button>
 					</div>
-					<br><br>
+					
 				</div>
   				
 			</div> 
             <br><br>
+			<div class="row">
+    		<form action="{{ url()->current() }}" method="get">
+        		<div class="col-md-8 col-md-offset-2 text-center  animate-box">
+            		<div class="input-group hdtuto control-group">
+                		<input type="search" name="keyword" class="myfrm form-control" value="{{ request('keyword') }}" placeholder="cari namanya disini...">
+                		<div class="input-group-btn"> 
+                    		<button class="btn btn-primary" type="submit"><i class="fldemo glyphicon glyphicon-search"></i></button>
+                		</div>
+                
+            		</div>
+            		<br><br>
+        		</div>
+        
+    		</form>
+			</div>
 			<div class="container">
             <div class="row row-bottom-padded-md">
 
-                @foreach($wisata as $key => $data)
+                @foreach($wisatas as $key => $data)
 				<div class="filterDiv {{$data->category}}">
 					<div class="col-lg-4 col-md-4 col-sm-9">
 						<div class="fh5co-blog animate-box1">

@@ -7,9 +7,10 @@
 <div class="container">
 
 <div class="row">
-
+    
     <div class="col-lg-12 margin-tb">
 
+    
         <div class="pull-left">
 
             <h2>Daftar Wisata</h2>
@@ -38,7 +39,21 @@
 
 @endif
 
- 
+<div class="row">
+    <form action="{{ url()->current() }}" method="get">
+        <div class="col-xs-5 col-sm-5 col-md-5">
+            <div class="input-group hdtuto control-group">
+                <input type="search" name="keyword" class="myfrm form-control" value="{{ request('keyword') }}" placeholder="cari namanya disini...">
+                <div class="input-group-btn"> 
+                    <button class="btn btn-dark" type="submit"><i class="fldemo glyphicon glyphicon-search"></i></button>
+                </div>
+                
+            </div>
+            <br>
+        </div>
+        
+    </form>
+</div>
 
 <table class="table table-bordered">
 
@@ -46,7 +61,6 @@
 
         <th>No</th>
 
-        <th>Image</th>
 
         <th>Name</th>
 
@@ -62,7 +76,7 @@
 
         <td>{{ ++$i }}</td>
 
-        <td><img src="/image/{{ $wisata->image }}" width="100px"></td>
+        
 
         <td>{{ $wisata->name }}</td>
 		<td><a class="btn btn-info" href="{{ route('wisatas.show',$wisata->id) }}">Lihat detail</a> </td>
@@ -71,7 +85,7 @@
 		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Hapus</button>
 		<a class="btn btn-primary" href="{{ route('wisatas.edit',$wisata->id) }}">Edit</a>
 
-
+        
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
   			<div class="modal-dialog">
@@ -111,7 +125,7 @@
 
 </table>
 
-<h2 class="text-center">{!! $wisatas->links() !!}</h2>
+<h3 class="text-center">{!! $wisatas->links() !!}</h3>
 
 
  		

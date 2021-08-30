@@ -61,9 +61,34 @@
 
 	</head>
 	<body>
+	@if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+	@endif
+	
+	@if ($errors->any())
+
+	<div class="alert alert-danger">
+
+    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+
+    <ul>
+
+        @foreach ($errors->all() as $error)
+
+            <li>{{ $error }}</li>
+
+        @endforeach
+
+    </ul>
+
+</div>
+
+@endif
 		<div id="fh5co-wrapper">
 		<div id="fh5co-page">
-
+		
 		<header id="fh5co-header-section" class="sticky-banner">
 			<div class="container">
 				<div class="nav-header">
@@ -113,142 +138,335 @@
 				</div>
 			</div>
 		</header>
+		<div class="fh5co-hero">
+			<div class="fh5co-overlay"></div>
+			<div class="fh5co-cover" data-stellar-background-ratio="0.5" style="background-image: url(/image/{{ $wisata->image }});">
+				<div class="desc">
+					<div class="container">
+						<div class="row">   
+							<div class="desc2 animate-box">
+								<div class="col-sm-7 col-sm-push-1 col-md-7 col-md-push-1">
+									<h1>Wisata {{ $wisata->category }}</h1>
+									<h2>{{ $wisata->name }}</h2>
+									<h3>Klinthung Banyumas</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
 
 		<div id="fh5co-tours" class="fh5co-section-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
 						<h3>Wisata {{ $wisata->category }}</h3>
-						<p>Pilihan Wisata di Kabupaten Banyumas dari hiburan sampai wisata keluarga yang siap untuk menemani liburanmu!</p>
+						<p>Daftar kumpulan wisata di Kabupaten Banyumas dari hiburan sampai wisata keluarga yang siap untuk menemani liburanmu!</p>
 					</div>
 				</div>
-				<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators ">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-	<li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner animate-box">
-    <div class="item active ">
-      <img src="/image/{{ $wisata->image }}"width="1280" height="720" alt="Los Angeles">
-    </div>
-
-    <div class="item ">
-      <img src="/image/{{ $wisata->image1 }}"width="1280" height="720" alt="Los Angeles">
-    </div>
-
-    <div class="item ">
-      <img src="/image/{{ $wisata->image2 }}"width="1280" height="720" alt="Los Angeles">
-    </div>
-	<div class="item ">
-      <img src="/image/{{ $wisata->image3 }}"width="1280" height="720" alt="Los Angeles">
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control animate-box" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control animate-box" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div><br><br><br>
 				<div class="row">
 					<div class="col-md-12 animate-box">
 						<h2 class="heading-title">{{ $wisata->name }}</h2>
 					</div>
-					<div class="col-md-12 animate-box">
+					<div class="col-md-6 animate-box">
 						<p>{{ $wisata->detail }}</p><br><br>
 						
+					</div>
+					<div class="col-md-6 animate-box">
+
+	
+
+
+					
+					<div id="myCarousel" class="carousel slide" data-ride="carousel">
+						
+
+						<!-- Wrapper for slides -->
+						<div class="carousel-inner">
+						<div class="item active">
+							<img src="/image/{{ $wisata->image }}" alt="(/image/{{ $wisata->image }})" style="width:100%;">
+						</div>
+						@foreach ($wgambars as $wgambar)
+						@if (  "{{ $wgambar->wisata_id }}"  == "{{ $wisata->id }}" )     						
+						<div class="item">
+							<img src="{{asset('image/'. $wgambar->image)}}" alt="{{ $wgambar->image }}" style="width:100%;">
+							
+
+						</div>
+						@endif
+						@endforeach
+						</div>
+
+						<!-- Left and right controls -->
+						<a class="left carousel-control" href="#myCarousel" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+						<span class="sr-only">Previous</span>
+						</a>
+						<a class="right carousel-control" href="#myCarousel" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+						<span class="sr-only">Next</span>
+						</a>
+					</div>
+					@if(Auth::check()==1 && Auth::user()->role == "admin")
+					<br>
+					<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal1">+ gambar</button>
+					@endif
+					</div>
+
+				
+				<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="myModalLabel">Tambah Gambar</h4>
+							</div>
+							<div class="modal-body">
+								
+
+								
+
+								<form action="{{ route('wgambars.store') }}" method="POST" enctype="multipart/form-data">
+
+								@csrf
+										
+
+								<input type="hidden" id="wisata_id" name="wisata_id" value="{{ $wisata->id}}">
+								
+
+								
+								
+									<input type="file" name="image"  class="form-control" placeholder="image">
+
+
+								<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="submit" class="btn btn-success">Tambah</button>
+								</div>
+					</form>
+							</div>
+						</div>
+					</div>
+
+			</div>
+</div><br><br><br>
+@if(Auth::check()==1 && Auth::user()->role == "admin")
+<table class="table table-bordered">
+
+<tr>
+
+	<th>Gambar</th>
+
+	<th>Action</th>
+
+</tr>
+
+@foreach ($wgambars as $wgambar)
+@if("{{ $wgambar->wisata_id }}"  == "{{ $wisata->id }}")
+<tr>
+
+
+	
+
+	<td><img src="/image/{{ $wgambar->image }}" width="100px" alt=""></td>
+	<td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal2">Hapus</button>
+
+
+	<!-- Modal -->
+	<div id="myModal2" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Hapus</h4>
+				  </div>
+			  <div class="modal-body">
+				<p>Anda yakin untuk menghapus?</p>
+			  </div>
+			  <div class="modal-footer">
+				
+			  <form action="{{ route('wgambars.destroy',$wgambar->id) }}" method="POST">
+												
+												@csrf
+												@method('DELETE')
+												<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-danger">Delete</button>
+											</form>
+			  </div>
+		</div>
+
+		  </div>
+	</div>
+
+		
+					
+	</td>
+
+</tr>
+
+@endif
+
+@endforeach
+
+</table>
+@endif
+			
+	<div id="fh5co-car" class="fh5co-section-grayy">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center heading-section animate-box">
+					<h3>Fasilitas</h3>
+					
 				</div>
+			</div>
+			<div class="row row-bottom-padded-md">
+			@foreach($wisata->fasi as $value)
+				<div class="col-xs-3 col-sm-3 col-md-3 animate-box">
+				
+					<div class="car">
+						<div class="one-4">
+							<h3>{{$value}}</h3>
+						</div>
+					</div>
+				</div>
+			@endforeach
+				
+			</div>
+		</div>
+	</div>
+	
+	</div>
 				
 				
 				</div>
 				
 			</div>
 		</div>
-		<div id="googleMap" style="width: full; height: 560px;"></div>
+		</div>
+</div>
+
+
+<section class="pricing-plans animate-box" id="pricing">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <ul class="pricing">
+                        <li class="price">
+							
+                             Weekdays <span><sup>Rp</sup>{{ $wisata->tktaday }}</span><br>
+							 Weekends <span><sup>Rp</sup>{{ $wisata->tktaend }}</span>
+                        </li>
+						<h2>Tiket Anak Anak</h2>
+                    </ul>
+                </div>
+				<div class="col-sm-6 col-md-6">
+                    <ul class="pricing">
+                        <li class="price">
+							
+                             Weekdays <span><sup>Rp</sup>{{ $wisata->tktdday }}</span><br>
+							 Weekends <span><sup>Rp</sup>{{ $wisata->tktdend }}</span>
+                        </li>
+						<h2>Tiket Dewasa</h2>
+                    </ul>
+					
+                </div>
+                
+            </div>
+            <!-- End of .row -->
+        </div>
+        <!-- End of .container --> 
+    </section>
+	<br><br><br>
+		<div class="animate-box" id="googleMap" style="width: full; height: 560px;"></div>
 		<!--<div style="width: full; height: 560px;">
 					{!! Mapper::render() !!}
 		</div>-->
-		<section class="common-form-section contact-form-wrapper" id="footer-contact">
-        <div class="container">
-            <!--end section title -->
-            <div class="row">
-                <div class="flex-container clearfix">
-                    <div class="col-md-8 col-sm-12">
-                        <div class="customise-form contact-form clearfix">
-                            
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <h3>Harga Tiket Masuk Weekdays</h3>
-                                    </div>
-									<div class="col-xs-6 ">
-										<h4>Anak Anak</h4>
-										<p>{{ $wisata->tika }}</p>
-                                    </div>
-									<div class="col-xs-6">
-										<h4>Dewasa</h4>
-										<p>{{ $wisata->tikd }}</p><br>
-                                    </div>
-                                </div>
-								<div class="row">
-                                    <div class="col-sm-12">
-                                        <h3>Harga Tiket Masuk Weekend</h3>
-                                    </div>
-									<div class="col-xs-6 ">
-										<h4>Anak Anak</h4>
-										<p>{{ $wisata->tikaw }}</p>
-                                    </div>
-									<div class="col-xs-6">
-										<h4>Dewasa</h4>
-										<p>{{ $wisata->tikdw }}</p><br>
-                                    </div>
-                                </div>
-								<div class="row">
-                                    <div class="col-sm-12">
-                                        <h3>Jam Operasional</h3>
-                                    </div>
-									<div class="col-xs-6 ">
-										<h4>Weekdays</h4>
-										<p>{{ $wisata->btdays }}</p>
-                                    </div>
-									<div class="col-xs-6">
-										<h4>Weekend</h4>
-										<p>{{ $wisata->btend }}</p><br>
-                                    </div>
-                                </div>
-								<div class="row">
-                                    <div class="col-sm-12">
-                                        <h3>Kunjungi kami di</h3>
-										<p>{{ $wisata->alamat }} </p>
-                                    </div>
-                                </div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <div class="contact-information">
-                            <h3>Kontak</h3>
-                            <div>Nomer Telefon
-                                <div><a href="tel:{{ $wisata->telefon }}">{{ $wisata->telefon }}</a></div>
-                            </div>
-                            <div>Web<a href="http://{{ $wisata->web }}/">{{ $wisata->web }}</a></div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+		<div id="fh5co-contact" class="fh5co-section-gray">
+			<div class="container">
+				
+				<form action="#">
+					<div class="row animate-box">
+						<div class="col-md-6">
+							<h3 class="section-title">Alamat</h3>
+							<p>Kunjungi kami di alamat berikut</p>
+							<ul class="contact-info">
+								<li><i class="icon-location-pin"></i>{{ $wisata->alamat }}</li>
+								<li><i class="icon-phone2"></i>{{ $wisata->telefon }}</li>
+								<li><i class="icon-globe2"></i><a href="http://{{ $wisata->web }}">{{ $wisata->web }}</a></li>
+							</ul>
+						</div>
+						<div class="col-md-6">
+						<h3 class="section-title">Jam Operasional</h3>
+								
+									<table>
+										<tr class="monday fvl-d">
+											<td><span>Weekdays</span></td>
+											<td>{{ $wisata->bukday }}</td>
+											<td>-</td>
+											<td>{{ $wisata->ttpday }}</td>
+										</tr>
+										<tr class="tuesday fvl-d">
+											<td><span>Weekends</span></td>
+											<td>{{ $wisata->bukend }}</td><td>-</td>
+											<td>{{ $wisata->ttpend }}</td>
+										</tr>
+										
+									</table>
+								
+								<script>
+								const time = () => {
+
+									const activerow = document.querySelector('#activerow');
+
+									const monday = document.querySelector('.monday');
+									const tuesday = document.querySelector('.monday');
+									const wednesday = document.querySelector('.monday');
+									const thursday = document.querySelector('.monday');
+									const friday = document.querySelector('.monday');
+									const saturday = document.querySelector('.tuesday');
+									const sunday = document.querySelector('.tuesday');
 
 
+									switch (new Date().getDay()) {
+
+										case 1:
+											monday.setAttribute("id", "activerow");
+											break;
+										case 2:
+											tuesday.setAttribute("id", "activerow");
+											break;
+										case 3:
+											wednesday.setAttribute("id", "activerow");
+											break;
+										case 4:
+											thursday.setAttribute("id", "activerow");
+											break;
+										case 5:
+											friday.setAttribute("id", "activerow");
+											break;
+										case 6:
+											saturday.setAttribute("id", "activerow");
+											break;
+										case 0:
+											sunday.setAttribute("id", "activerow");
+											break;
+									}
+
+								}
+								time();
+								</script>
+
+							
+						</div>
+						
+					</div>
+				</form>
+			</div>
+		</div>
 
 
 
@@ -273,12 +491,11 @@
 	<!-- END fh5co-wrapper -->
 
 	<!-- jQuery -->
-	
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA-R3eTNSF8z5mL5KmRT8mJJcENDBW5qMU"></script>
 <script>
 function initialize() {
   var propertiPeta = {
-    center:new google.maps.LatLng({{ $wisata->mapslat }}),
+    center:new google.maps.LatLng({{ $wisata->mapslat }},{{ $wisata->mapslong }}),
     zoom:16,
     mapTypeId:google.maps.MapTypeId.ROADMAP
   };
@@ -287,7 +504,7 @@ function initialize() {
   
   // membuat Marker
   var marker=new google.maps.Marker({
-      position: new google.maps.LatLng({{ $wisata->mapslat }}),
+      position: new google.maps.LatLng({{ $wisata->mapslat }},{{ $wisata->mapslong }}),
       map: peta
   });
 

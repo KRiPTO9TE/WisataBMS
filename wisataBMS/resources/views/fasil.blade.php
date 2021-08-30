@@ -128,12 +128,27 @@
 					<br><br>
 				</div>
   				
-			</div> <br><br>
+			</div>
+			<div class="row">
+    		<form action="{{ url()->current() }}" method="get">
+        		<div class="col-md-8 col-md-offset-2 text-center  animate-box">
+            		<div class="input-group hdtuto control-group">
+                		<input type="search" name="keyword" class="myfrm form-control" value="{{ request('keyword') }}" placeholder="cari namanya disini...">
+                		<div class="input-group-btn"> 
+                    		<button class="btn btn-primary" type="submit"><i class="fldemo glyphicon glyphicon-search"></i></button>
+                		</div>
+                
+            		</div>
+            		<br><br>
+        		</div>
+        
+    		</form>
+			</div>
 			<div class="container">
             <div class="row row-bottom-padded-md">
             
             
-                @foreach($fasil as $key => $data)
+                @foreach($fasils as $key => $data)
                 <div class="filterDiv {{$data->category}}">
 					<div class="col-lg-4 col-md-4 col-sm-6">
 						<div class="fh5co-blog animate-box1">

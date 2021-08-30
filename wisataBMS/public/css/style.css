@@ -1583,6 +1583,10 @@ div.cs-select span {
   margin-bottom: 10px;
   font-weight: bold;
   line-height: 1.5;
+  white-space: nowrap;
+  width: 290px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .fh5co-blog .blog-text h3 a {
   color: rgba(0, 0, 0, 0.6);

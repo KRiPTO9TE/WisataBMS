@@ -3,7 +3,7 @@
      
 
 @section('content')
-<br>
+<br><br>
 
 <div class="container">
 
@@ -40,14 +40,26 @@
 @endif
 
  
-
+<div class="row">
+    <form action="{{ url()->current() }}" method="get">
+        <div class="col-xs-5 col-sm-5 col-md-5">
+            <div class="input-group hdtuto control-group">
+                <input type="search" name="keyword" class="myfrm form-control" value="{{ request('keyword') }}" placeholder="cari namanya disini...">
+                <div class="input-group-btn"> 
+                    <button class="btn btn-dark" type="submit"><i class="fldemo glyphicon glyphicon-search"></i></button>
+                </div>
+                
+            </div>
+            <br>
+        </div>
+        
+    </form>
+</div>
 <table class="table table-bordered">
 
     <tr>
 
         <th>No</th>
-
-        <th>Image</th>
 
         <th>Name</th>
 
@@ -63,7 +75,6 @@
 
         <td>{{ ++$i }}</td>
 
-        <td><img src="/image/{{ $fasil->image }}" width="100px"></td>
 
         <td>{{ $fasil->name }}</td>
 		<td><a class="btn btn-info" href="{{ route('fasils.show',$fasil->id) }}">Lihat detail</a> </td>
@@ -113,8 +124,8 @@
 </table>
 </div>
 
+<h3 class="text-center">{!! $fasils->links() !!}</h3>
 
-{!! $fasils->links() !!}
 
 
 

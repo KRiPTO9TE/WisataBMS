@@ -722,7 +722,9 @@ div.cs-select span {
 .fh5co-section-gray {
   background: rgba(0, 0, 0, 0.04);
 }
-
+.fh5co-section-grayy {
+  background: rgba(255, 255, 255, 0.04);
+}
 .heading-section {
   padding-bottom: 1em;
   margin-bottom: 5em;
@@ -867,6 +869,100 @@ div.cs-select span {
   }
 }
 
+* {box-sizing: border-box}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
 .flight-book {
   width: 100%;
   float: left;
@@ -926,10 +1022,31 @@ div.cs-select span {
   display: -webkit-flex;
   display: flex;
   width: 100%;
+  height: 10px;
   float: left;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
+}
+#fh5co-car .carr {
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 10px;
+  float: left;
+  margin-bottom: 0px;
 }
 #fh5co-car .car .one-4 {
+  width: 100%;
+  float: left;
+  background: #F78536;
+  padding: 30px;
+}
+#fh5co-car .carr .one-4 {
   width: 40%;
   float: left;
   background: #F78536;
@@ -937,6 +1054,14 @@ div.cs-select span {
 }
 #fh5co-car .car .one-4 h3, #fh5co-car .car .one-4 span {
   color: #fff;
+}
+#fh5co-car .carr .one-4 h3, #fh5co-car .carr .one-4 span {
+  color: #fff;
+}
+#fh5co-car .carr .one-4 span {
+  display: block;
+  font-weight: 400;
+  font-size: 20px;
 }
 #fh5co-car .car .one-4 span {
   display: block;
@@ -947,6 +1072,14 @@ div.cs-select span {
   font-size: 14px;
 }
 #fh5co-car .car .one-1 {
+  width: 100%;
+  float: right;
+  height: auto;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#fh5co-car .carr .one-1 {
   width: 60%;
   float: right;
   height: auto;
@@ -2111,3 +2244,150 @@ html, body, #map-canvas {
 	height: 75%;
 	width: 75%;
 }
+#activerow {
+  border: 0.5px solid #F78536;
+}
+
+#activerow > td {
+  color: #F78536;
+  font-weight: 600;
+}
+
+#activerow > td > span {
+  color: #F78536;
+}
+
+/* Design der Tabelle */
+.opening-hours {
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10), 0 1px 2px rgba(0, 0, 0, 0.24);
+  background-color: white;
+  padding: 1em;
+  max-width: 450px;
+  min-width: 320px;
+}
+
+
+.fvl-d > td {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  color: #A299AC;
+  text-transform: uppercase;
+  padding: 1em;
+}
+
+.fvl-d > td > span {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: #A299AC;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 382px) {
+
+.fvl-d > td {
+  font-size: 14px;
+  padding: 15px 5px;
+}
+
+#activerow {
+  border: none;
+  background-color: #F78536;
+}
+
+#activerow > td {
+  color: white;
+  font-weight: 600;
+}
+
+#activerow > td > span {
+  color: white;
+}
+
+}
+
+/*-- 13. pricing plans css 
+--------------------------------------- --*/
+
+.pricing-plans {
+  padding: 42px 0 0;
+}
+
+.pricing-plans h2 {
+  margin-bottom: 35px;
+}
+
+.pricing-plans .pricing {
+  text-align: center;
+  border: 1px solid #e9e9e9;
+  padding: 0 0 37px;
+  margin: 35px 0 0;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+}
+
+.pricing-plans .pricing li {
+  line-height: 35px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pricing-plans .pricing .price {
+  font-size: 24px;
+  line-height: 30px;
+  color: #323a45;
+  font-weight: 600;
+  padding: 42px 30px 40px;
+  border-bottom: 1px solid #e9e9e9;
+  margin-bottom: 36px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+
+.pricing-plans .pricing .price span {
+  display: block;
+  font-size: 60px;
+  line-height: 1;
+  color: #F78536;
+  font-weight: 600;
+  padding: 15px 0 0;
+}
+
+.pricing-plans .pricing .price sup {
+  font-size: 35px;
+}
+
+.pricing-plans .pricing .price [class^="flaticon-"]::before {
+  font-size: 78px;
+  line-height: 1;
+  margin-bottom: 35px;
+  display: block;
+  margin-left: 0;
+  font-weight: 400;
+  color: #323a45;
+  transition: .5s;
+}
+
+.pricing-plans .btn.btn-fill {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.pricing-plans .btn-primary {
+  width: 100%;
+  margin-top: 0px;
+}
+
+.pricing-plans .pricing:hover .price,
+.pricing-plans .pricing:hover [class^="flaticon-"]::before {
+  color: #F78536;
+}
+

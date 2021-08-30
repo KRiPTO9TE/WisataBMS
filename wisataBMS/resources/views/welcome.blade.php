@@ -182,13 +182,16 @@
 						
 						@foreach($wisata as $key => $data)
 						@if($loop->index < 8)
-							<li class="one-forth text-center" style="background-image: url(image/{{$data->image}});">
+							
+							<li class="one-forth text-center" style="background-image:  url({{asset('image/'. $data->image)}});">
+							
 								<a href="/wisatas/{{$data->id}}">
 									<div class="case-studies-summary">
 										<h2>{{$data->name}}</h2>
 									</div>
 								</a>
 							</li>
+							
 							@endif
 						@endforeach
 							<li class="one-forth text-center">

@@ -723,6 +723,9 @@ div.cs-select span {
 .fh5co-section-gray {
   background: rgba(0, 0, 0, 0.04);
 }
+.fh5co-section-grayy {
+  background: rgba(255, 0, 0, 0.04);
+}
 
 .heading-section {
   padding-bottom: 1em;
@@ -938,10 +941,10 @@ div.cs-select span {
   margin-bottom: 30px;
 }
 #fh5co-car .car .one-4 {
-  width: 40%;
-  float: left;
+  width: 100%;
+  float: right;
   background: #F78536;
-  padding: 30px;
+  padding: 100px;
 }
 #fh5co-car .car .one-4 h3, #fh5co-car .car .one-4 span {
   color: #fff;

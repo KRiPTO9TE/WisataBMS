@@ -39,7 +39,24 @@
 
 @endif
 
- 
+<div class="row">
+    <form action="{{ url()->current() }}" method="get">
+        <div class="col-xs-5 col-sm-5 col-md-5">
+            <div class="input-group hdtuto control-group">
+                <input type="search" name="keyword" class="myfrm form-control" value="{{ request('keyword') }}" placeholder="cari namanya disini...">
+                <div class="input-group-btn"> 
+                    <button class="btn btn-dark" type="submit"><i class="fldemo glyphicon glyphicon-search"></i></button>
+                </div>
+                
+            </div>
+            <br>
+        </div>
+        
+    </form>
+</div>
+
+
+
 
 <table class="table table-bordered">
 
@@ -47,7 +64,6 @@
 
         <th>No</th>
 
-        <th>Image</th>
 
         <th>Name</th>
 
@@ -63,15 +79,18 @@
 
         <td>{{ ++$i }}</td>
 
-        <td><img src="/image/{{ $kuliner->image }}" width="100px"></td>
 
         <td>{{ $kuliner->name }}</td>
-		<td><a class="btn btn-info" href="{{ route('kuliners.show',$kuliner->id) }}">Lihat detail</a> </td>
+		<td><a class="btn btn-info" href="{{ route('kuliners.show',$kuliner->id) }}">Lihat detail</a>
+        
+        <a class="btn btn-success" href="/kuliners/menu/{{$kuliner->id}}">Tambah Menu</a> 
+        
+        </td>
 			
         <td>
-		<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Hapus</button>
+		
 		<a class="btn btn-primary" href="{{ route('kuliners.edit',$kuliner->id) }}">Edit</a>
-
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Hapus</button>
 
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
@@ -114,7 +133,7 @@
 </div>
 
 
-{!! $kuliners->links() !!}
+<h3 class="text-center">{!! $kuliners->links() !!}</h3>
 
 
 

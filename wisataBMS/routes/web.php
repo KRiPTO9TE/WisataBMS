@@ -5,9 +5,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WisataController;
 use App\Http\Controllers\KulinerController;
+use App\Http\Controllers\KmenuController;
 use App\Http\Controllers\FasilController;
-
-  
+use App\Http\Controllers\WgambarController;
+use App\Http\Controllers\FgambarController;
+use App\Http\Controllers\KgambarController;
 
 
 
@@ -35,27 +37,35 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/', function () {
     $wisata = DB::table('wisatas')->get();
-    return view('welcome',['wisata' => $wisata]);
-});
-Route::get('wisata', function () {
-
-    $wisata = DB::table('wisatas')->get();
-
-    return view('wisata', ['wisata' => $wisata]);
-});
-Route::get('kuliner', function () {
-
-    $kuliner = DB::table('kuliners')->get();
-
-    return view('kuliner', ['kuliner' => $kuliner]);
-});
-Route::get('fasil', function () {
-
-    $fasil = DB::table('fasils')->get();
-
-    return view('fasil', ['fasil' => $fasil]);
+    $wgambar = DB::table('wgambars')->get();
+    return view('welcome',['wisata' => $wisata,'wgambar' => $wgambar]);
 });
 
+
+Route::get('wisata',[WisataController::class, 'userindex']);
+
+Route::get('fasil',[FasilController::class, 'userindex']);
+Route::get('kuliner',[KulinerController::class, 'userindex']);
 Route::resource('wisatas', WisataController::class);
+Route::resource('wgambars', WgambarController::class);
+Route::resource('fgambars', FgambarController::class);
+Route::resource('kgambars', KgambarController::class);
+Route::get('wisatas/tambah-gambar/{id}',[WisataController::class, 'tambahgambar']);
+
+
 Route::resource('kuliners', KulinerController::class);
+Route::resource('kmenus', KmenuController::class);
+
+Route::get('kuliners/menu/{id}',[KulinerController::class, 'tambahmenu']);
+Route::get('lihat-kuliner/{kuliner}',[KulinerController::class, 'showmenu']);
+//Route::get('lihat-kuliner/{kuliner}',[KmenuController::class, 'kasih']);
+//Route::get('/kuliners/{id}',[App\Http\Controllers\KulinerController::class, 'show']);
+//Route::get('/kuliners', [App\Http\Controllers\KulinerController::class, 'index']);
+//Route::get('/kuliners/create', [App\Http\Controllers\KulinerController::class, 'create']);
+//Route::get('/kuliners/{id}/edit', [App\Http\Controllers\KulinerController::class, 'edit']);
+//Route::post('/kuliners', [App\Http\Controllers\KulinerController::class, 'store']);
+//Route::put('/kuliners/{id}', [App\Http\Controllers\KulinerController::class, 'update']);
+//Route::delete('/kuliners/{id}', [App\Http\Controllers\KulinerController::class, 'delete']);
+
 Route::resource('fasils', FasilController::class);
+
